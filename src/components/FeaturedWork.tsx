@@ -125,19 +125,19 @@ export default function FeaturedWork() {
       : caseStudies.filter((study) => study.category === selectedFilter);
 
   return (
-    <section id="work" className="py-24 sm:py-32 relative border-t border-white/[0.06]">
+    <section id="work" className="py-24 sm:py-32 relative border-t border-slate-200 dark:border-white/[0.06] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 mb-3 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 mb-3 uppercase tracking-wider">
               Featured Work & Case Studies
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
               Work that makes an impact.
             </h2>
           </div>
-          <p className="text-slate-400 max-w-md text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 max-w-md text-sm sm:text-base leading-relaxed">
             Every project has a reason to exist. Explore selected digital products, platforms, and experiences crafted with purpose and precision.
           </p>
         </div>
@@ -150,8 +150,8 @@ export default function FeaturedWork() {
               onClick={() => setSelectedFilter(category)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                 selectedFilter === category
-                  ? "bg-white text-black font-semibold shadow-lg shadow-white/10"
-                  : "bg-white/[0.04] text-slate-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]"
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-black font-semibold shadow-md"
+                  : "bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.04] text-slate-700 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.06]"
               }`}
             >
               {category}
@@ -165,26 +165,26 @@ export default function FeaturedWork() {
             <div
               key={project.id}
               onClick={() => setActiveModalStudy(project)}
-              className="glass-panel glass-panel-hover rounded-3xl p-7 sm:p-9 flex flex-col justify-between cursor-pointer group border border-white/[0.08]"
+              className="bg-white dark:bg-[#101422]/80 rounded-3xl p-7 sm:p-9 flex flex-col justify-between cursor-pointer group border border-slate-200 dark:border-white/[0.08] hover:border-blue-500/40 shadow-sm hover:shadow-xl dark:shadow-none transition-all duration-300"
             >
               <div>
                 <div className="flex items-center justify-between gap-4 mb-5">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-300 border border-blue-500/20">
                     {project.category}
                   </span>
                   {project.badge && (
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
-                      <Award className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
+                      <Award className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                       {project.badge}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm font-medium text-slate-400 mb-4">{project.tagline}</p>
-                <p className="text-sm text-slate-300 leading-relaxed mb-6">{project.summary}</p>
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">{project.tagline}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">{project.summary}</p>
               </div>
 
               <div>
@@ -193,18 +193,18 @@ export default function FeaturedWork() {
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[11px] font-mono text-slate-400 bg-white/[0.04] px-2.5 py-1 rounded-md border border-white/[0.06]"
+                      className="text-[11px] font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/[0.04] px-2.5 py-1 rounded-md border border-slate-200 dark:border-white/[0.06]"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-5 border-t border-white/[0.06]">
-                  <span className="text-xs font-medium text-slate-400">
+                <div className="flex items-center justify-between pt-5 border-t border-slate-200 dark:border-white/[0.06]">
+                  <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
                     {project.metrics}
                   </span>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 group-hover:text-blue-300">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300">
                     <span>Read Case Study</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
@@ -218,76 +218,76 @@ export default function FeaturedWork() {
       {/* Case Study Detail Modal */}
       {activeModalStudy && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in">
-          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto glass-panel rounded-3xl p-6 sm:p-10 border border-white/20 shadow-2xl">
+          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#0f1320] text-slate-900 dark:text-white rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-white/20 shadow-2xl">
             {/* Close Button */}
             <button
               onClick={() => setActiveModalStudy(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-slate-300 hover:text-white transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="mb-6">
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                 {activeModalStudy.category}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-white mt-3">
+              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-3">
                 {activeModalStudy.title}
               </h2>
-              <p className="text-slate-400 text-sm sm:text-base mt-1">
+              <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base mt-1">
                 {activeModalStudy.tagline}
               </p>
             </div>
 
             {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] mb-8">
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Client</span>
-                <span className="text-xs sm:text-sm font-semibold text-white">{activeModalStudy.client}</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.client}</span>
               </div>
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Timeline</span>
-                <span className="text-xs sm:text-sm font-semibold text-white">{activeModalStudy.year}</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.year}</span>
               </div>
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Key Result</span>
-                <span className="text-xs sm:text-sm font-semibold text-white">{activeModalStudy.metrics}</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.metrics}</span>
               </div>
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Deliverables</span>
-                <span className="text-xs sm:text-sm font-semibold text-white">{activeModalStudy.deliverables.length} core outputs</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.deliverables.length} core outputs</span>
               </div>
             </div>
 
             {/* Problem / Solution / Impact */}
             <div className="space-y-6 mb-8">
-              <div className="border-l-2 border-red-500/40 pl-4 py-1">
-                <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-1">The Challenge</h4>
-                <p className="text-sm text-slate-300 leading-relaxed">{activeModalStudy.fullStory.problem}</p>
+              <div className="border-l-2 border-red-500/60 pl-4 py-1">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">The Challenge</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{activeModalStudy.fullStory.problem}</p>
               </div>
 
-              <div className="border-l-2 border-blue-500/40 pl-4 py-1">
-                <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-1">The Approach & Solution</h4>
-                <p className="text-sm text-slate-300 leading-relaxed">{activeModalStudy.fullStory.solution}</p>
+              <div className="border-l-2 border-blue-500/60 pl-4 py-1">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">The Approach & Solution</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{activeModalStudy.fullStory.solution}</p>
               </div>
 
-              <div className="border-l-2 border-emerald-500/40 pl-4 py-1">
-                <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-1">Impact & Outcome</h4>
-                <p className="text-sm text-slate-300 leading-relaxed">{activeModalStudy.fullStory.impact}</p>
+              <div className="border-l-2 border-emerald-500/60 pl-4 py-1">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">Impact & Outcome</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{activeModalStudy.fullStory.impact}</p>
               </div>
             </div>
 
             {/* Deliverables List */}
             <div className="mb-8">
-              <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-3">Key Deliverables</h4>
+              <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">Key Deliverables</h4>
               <div className="flex flex-wrap gap-2">
                 {activeModalStudy.deliverables.map((item) => (
                   <span
                     key={item}
-                    className="inline-flex items-center gap-1.5 text-xs text-slate-200 bg-white/[0.05] border border-white/[0.08] px-3 py-1.5 rounded-lg"
+                    className="inline-flex items-center gap-1.5 text-xs text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] px-3 py-1.5 rounded-lg"
                   >
-                    <CheckCircle className="w-3.5 h-3.5 text-blue-400" />
+                    <CheckCircle className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                     {item}
                   </span>
                 ))}
@@ -295,17 +295,17 @@ export default function FeaturedWork() {
             </div>
 
             {/* Modal Bottom CTA */}
-            <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between">
+            <div className="pt-6 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between">
               <button
                 onClick={() => setActiveModalStudy(null)}
-                className="text-xs text-slate-400 hover:text-white"
+                className="text-xs text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white cursor-pointer"
               >
                 ← Back to projects
               </button>
               <a
                 href="#contact"
                 onClick={() => setActiveModalStudy(null)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold bg-white text-black hover:bg-slate-200 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-opacity"
               >
                 <span>Discuss a similar project</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />

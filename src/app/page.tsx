@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#08090d] text-white selection:bg-blue-600 selection:text-white">
+    <div className="relative min-h-screen bg-slate-50 dark:bg-[#08090d] text-slate-900 dark:text-white transition-colors duration-300 selection:bg-cyan-500 selection:text-black">
       {/* Fixed Navigation Bar */}
       <Navbar />
 

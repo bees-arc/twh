@@ -37,7 +37,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Theweb Agency" }],
   icons: {
-    icon: "/nav-logo-icon.png",
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/apple-icon.png",
   },
 };
 
@@ -47,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${jetbrainsMono.variable} scroll-smooth dark`}>
-      <body className="min-h-screen bg-[#08090d] text-[#f8fafc] font-sans antialiased selection:bg-cyan-500 selection:text-black flex flex-col transition-colors duration-300">
+    <html lang="en" className={`${jakarta.variable} ${jetbrainsMono.variable} scroll-smooth`}>
+      <body className="min-h-screen bg-slate-50 dark:bg-[#08090d] text-slate-900 dark:text-[#f8fafc] font-sans antialiased selection:bg-cyan-500 selection:text-black flex flex-col transition-colors duration-300">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

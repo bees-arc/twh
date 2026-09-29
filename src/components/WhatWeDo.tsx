@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Laptop, Globe, Sparkles, ArrowRight, CheckCircle2, Layers } from "lucide-react";
+import { Laptop, Globe, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function WhatWeDo() {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -16,8 +16,8 @@ export default function WhatWeDo() {
         "We turn complex domain logic into intuitive, reliable digital products. From SaaS platforms and enterprise management systems to custom web applications, we focus on clarity, fast performance, and frictionless workflows.",
       icon: Laptop,
       color: "from-blue-500/20 to-cyan-500/10",
-      accent: "text-blue-400",
-      borderAccent: "border-blue-500/30",
+      accent: "text-blue-600 dark:text-blue-400",
+      borderAccent: "border-blue-500/40",
       capabilities: [
         "SaaS & Web Applications",
         "Enterprise Portals & CRM Dashboards",
@@ -37,8 +37,8 @@ export default function WhatWeDo() {
         "Modern websites shouldn't just look stunning — they must load in milliseconds, communicate value in seconds, and rank flawlessly. We build Next.js powered platforms that elevate your brand and turn curious visitors into loyal clients.",
       icon: Globe,
       color: "from-purple-500/20 to-blue-500/10",
-      accent: "text-purple-400",
-      borderAccent: "border-purple-500/30",
+      accent: "text-purple-600 dark:text-purple-400",
+      borderAccent: "border-purple-500/40",
       capabilities: [
         "High-Impact Marketing & Brand Websites",
         "Next.js App Router Architecture",
@@ -58,8 +58,8 @@ export default function WhatWeDo() {
         "Good design is not decoration; it is clarification. We craft comprehensive visual systems, UX journeys, and design languages that bring coherence to your brand across all digital touchpoints.",
       icon: Sparkles,
       color: "from-cyan-500/20 to-emerald-500/10",
-      accent: "text-cyan-400",
-      borderAccent: "border-cyan-500/30",
+      accent: "text-cyan-600 dark:text-cyan-400",
+      borderAccent: "border-cyan-500/40",
       capabilities: [
         "Product & Visual Identity Systems",
         "UX Research & User Journey Mapping",
@@ -73,17 +73,17 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <section id="what-we-do" className="py-24 sm:py-32 relative border-t border-white/[0.06] bg-[#090b12]">
+    <section id="what-we-do" className="py-24 sm:py-32 relative border-t border-slate-200 dark:border-white/[0.06] bg-slate-50/60 dark:bg-[#090b12] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20 mb-3 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 mb-3 uppercase tracking-wider">
             What We Do
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
             Everything your digital product needs to thrive.
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
             We don&apos;t build for the sake of buzzwords. We build useful, resilient, and visually captivating solutions tailored to your unique objectives.
           </p>
         </div>
@@ -97,10 +97,10 @@ export default function WhatWeDo() {
               <div
                 key={service.id}
                 onMouseEnter={() => setActiveTab(index)}
-                className={`glass-panel rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative overflow-hidden cursor-default ${
+                className={`rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative overflow-hidden cursor-default ${
                   isHoveredOrActive
-                    ? `${service.borderAccent} shadow-2xl bg-[#121626]/90`
-                    : "border-white/[0.07] hover:border-white/[0.15]"
+                    ? `${service.borderAccent} shadow-xl bg-white dark:bg-[#121626]/90 border`
+                    : "bg-white/80 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.07] hover:border-slate-300 dark:hover:border-white/[0.15]"
                 }`}
               >
                 {/* Subtle gradient corner glow */}
@@ -112,31 +112,31 @@ export default function WhatWeDo() {
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-8">
-                    <span className="font-mono text-sm font-bold text-slate-500">
+                    <span className="font-mono text-sm font-bold text-slate-400 dark:text-slate-500">
                       {service.num}
                     </span>
-                    <div className={`p-3 rounded-2xl bg-white/[0.05] border border-white/[0.08] ${service.accent}`}>
+                    <div className={`p-3 rounded-2xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] ${service.accent}`}>
                       <Icon className="w-6 h-6" />
                     </div>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">
                     {service.title}
                   </h3>
-                  <p className="text-xs sm:text-sm font-medium text-slate-400 mb-6">
+                  <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mb-6">
                     {service.tagline}
                   </p>
-                  <p className="text-sm text-slate-300 leading-relaxed mb-8">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
                     {service.description}
                   </p>
 
                   {/* Capabilities List */}
                   <div className="space-y-2.5 mb-8">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2 font-semibold">
                       Capabilities & Core Focus:
                     </span>
                     {service.capabilities.map((item) => (
-                      <div key={item} className="flex items-start gap-2.5 text-xs text-slate-300">
+                      <div key={item} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
                         <CheckCircle2 className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${service.accent}`} />
                         <span>{item}</span>
                       </div>
@@ -144,8 +144,8 @@ export default function WhatWeDo() {
                   </div>
                 </div>
 
-                <div className="relative z-10 pt-6 border-t border-white/[0.06]">
-                  <p className="text-xs text-slate-400 mb-4 italic">
+                <div className="relative z-10 pt-6 border-t border-slate-200 dark:border-white/[0.06]">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 italic">
                     &quot;{service.deliverable}&quot;
                   </p>
                   <a

@@ -51,7 +51,7 @@ html.light .glass-panel-hover:hover {
   box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
 }
 
-/* Ensure all headings in light mode are dark slate, EXCEPT in Hero, Contact, and Footer */
+/* Ensure all headings in light mode are solid dark slate, EXCEPT in Hero, Contact, and Footer */
 html.light #what-we-do h2,
 html.light #what-we-do h3,
 html.light #how-we-work h2,
@@ -83,10 +83,57 @@ html.light #insights p {
   color: #334155 !important;
 }
 
-/* Contact and Footer MUST always remain sleek dark/black */
-#contact,
-#contact * {
-  /* Retain dark styling in both modes */
+/* Keep Hero Section text crisp white because Hero has dark ocean background */
+#hero h1,
+#hero p,
+#hero span {
+  /* Retain hero high-contrast styling */
+}
+
+/* CONTACT CTA & FOOTER: Always pure dark/black in both Light and Dark themes */
+#contact {
+  background-color: #06080e !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+#contact h2,
+#contact h3 {
+  color: #ffffff !important;
+}
+
+#contact p {
+  color: #cbd5e1 !important;
+}
+
+#contact input,
+#contact textarea {
+  background-color: #121626 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+  color: #64748b !important;
+}
+
+footer {
+  background-color: #050609 !important;
+  color: #94a3b8 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+footer h4 {
+  color: #ffffff !important;
+}
+
+footer a {
+  color: #94a3b8 !important;
+}
+
+footer a:hover {
+  color: #ffffff !important;
 }
 
 /* Hide un-clipped ambient glows in light mode */
