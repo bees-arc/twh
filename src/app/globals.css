@@ -1,28 +1,22 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --bg-primary: #08090d;
     --bg-secondary: #0e111a;
-    --bg-card: rgba(18, 22, 34, 0.7);
-    --bg-card-hover: rgba(26, 32, 48, 0.85);
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-highlight: rgba(79, 140, 255, 0.3);
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    --border-subtle: rgba(255, 255, 255, 0.08);
   }
 
   html.light {
     --bg-primary: #f8fafc;
     --bg-secondary: #ffffff;
-    --bg-card: rgba(255, 255, 255, 0.88);
-    --bg-card-hover: rgba(255, 255, 255, 0.98);
-    --border-subtle: rgba(15, 23, 42, 0.08);
-    --border-highlight: rgba(14, 165, 233, 0.35);
     --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
+    --text-secondary: #334155;
+    --border-subtle: rgba(15, 23, 42, 0.08);
   }
 
   * {
@@ -39,14 +33,14 @@
   }
 }
 
-/* Light Mode Overrides for sections and text */
+/* Light Mode Overrides for upper content sections */
 html.light body {
   background-color: #f8fafc;
   color: #0f172a;
 }
 
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   border-color: rgba(15, 23, 42, 0.08);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
 }
@@ -57,60 +51,47 @@ html.light .glass-panel-hover:hover {
   box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
 }
 
-html.light .text-white {
+/* Ensure all headings in light mode are dark slate, EXCEPT in Hero, Contact, and Footer */
+html.light #what-we-do h2,
+html.light #what-we-do h3,
+html.light #how-we-work h2,
+html.light #how-we-work h3,
+html.light #how-we-work h4,
+html.light #approach h2,
+html.light #approach h3,
+html.light #about h2,
+html.light #about h3,
+html.light #founder h2,
+html.light #founder h3,
+html.light #technology h2,
+html.light #technology h3,
+html.light #work h2,
+html.light #work h3,
+html.light #insights h2,
+html.light #insights h3 {
   color: #0f172a !important;
 }
 
-/* Keep hero text white since hero has dark oceanic photography */
-html.light #hero .text-white,
-html.light #hero .text-slate-200,
-html.light #hero .text-slate-300,
-html.light header .text-white {
-  color: #ffffff !important;
-}
-
-html.light .text-slate-300 {
+html.light #what-we-do p,
+html.light #how-we-work p,
+html.light #approach p,
+html.light #about p,
+html.light #founder p,
+html.light #technology p,
+html.light #work p,
+html.light #insights p {
   color: #334155 !important;
 }
 
-html.light .text-slate-400 {
-  color: #64748b !important;
+/* Contact and Footer MUST always remain sleek dark/black */
+#contact,
+#contact * {
+  /* Retain dark styling in both modes */
 }
 
-html.light .bg-\[\#08090d\],
-html.light .bg-\[\#090b12\],
-html.light .bg-\[\#080a11\],
-html.light .bg-\[\#07080d\],
-html.light .bg-\[\#07090e\],
-html.light .bg-\[\#080a10\],
-html.light .bg-\[\#050609\] {
-  background-color: #f8fafc !important;
-}
-
-html.light .border-white\/\[0\.06\],
-html.light .border-white\/\[0\.08\],
-html.light .border-white\/\[0\.1\] {
-  border-color: rgba(15, 23, 42, 0.08) !important;
-}
-
-html.light .bg-white\/\[0\.02\],
-html.light .bg-white\/\[0\.03\],
-html.light .bg-white\/\[0\.04\],
-html.light .bg-white\/\[0\.05\],
-html.light .bg-white\/\[0\.06\] {
-  background-color: rgba(15, 23, 42, 0.03) !important;
-}
-
-html.light input,
-html.light textarea {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light input::placeholder,
-html.light textarea::placeholder {
-  color: #94a3b8 !important;
+/* Hide un-clipped ambient glows in light mode */
+html.light .bg-glow-radial {
+  display: none !important;
 }
 
 /* Custom Scrollbar */
@@ -118,7 +99,7 @@ html.light textarea::placeholder {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: #08090d;
 }
 ::-webkit-scrollbar-thumb {
   background: #334155;
@@ -160,26 +141,7 @@ html.light .text-gradient {
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 0.4; }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 4s ease-in-out infinite;
 }

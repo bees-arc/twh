@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="relative h-8 w-32 mb-4">
               <Image
-                src={theme === "light" ? "/nav-logo-dark.webp" : "/nav-logo-white.webp"}
+                src="/nav-logo-white.webp"
                 alt="Theweb Agency"
                 width={128}
                 height={32}
