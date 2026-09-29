@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp, Clock, Globe, Heart } from "lucide-react";
+import { useTheme } from "./ThemeContext";
 
 export default function Footer() {
+  const { theme } = useTheme();
   const [colomboTime, setColomboTime] = useState<string>("");
   const [osloTime, setOsloTime] = useState<string>("");
 
@@ -47,8 +49,8 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="relative h-8 w-32 mb-4">
               <Image
-                src="/brand/nav-logo-white.webp"
-                alt="Theweb"
+                src={theme === "light" ? "/nav-logo-dark.webp" : "/nav-logo-white.webp"}
+                alt="Theweb Agency"
                 width={128}
                 height={32}
                 className="object-contain"
@@ -98,44 +100,44 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#work" className="hover:text-white transition-colors">
+                <Link href="/portfolio" className="hover:text-white transition-colors">
                   Featured Work
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#what-we-do" className="hover:text-white transition-colors">
-                  What We Do
-                </a>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  What We Do & Services
+                </Link>
               </li>
               <li>
-                <a href="#how-we-work" className="hover:text-white transition-colors">
+                <Link href="/services#how-we-work" className="hover:text-white transition-colors">
                   How We Work
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#approach" className="hover:text-white transition-colors">
+                <Link href="/services#approach" className="hover:text-white transition-colors">
                   Theweb Approach
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition-colors">
+                <Link href="/about" className="hover:text-white transition-colors">
                   About Theweb
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#founder" className="hover:text-white transition-colors">
-                  Founder
-                </a>
+                <Link href="/about#founder" className="hover:text-white transition-colors">
+                  Founder Story
+                </Link>
               </li>
               <li>
-                <a href="#technology" className="hover:text-white transition-colors">
+                <Link href="/services#technology" className="hover:text-white transition-colors">
                   Technology Stack
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#insights" className="hover:text-white transition-colors">
-                  Insights
-                </a>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact & Inquiries
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeContext";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -46,9 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${jetbrainsMono.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-[#08090d] text-[#f8fafc] font-sans antialiased selection:bg-cyan-500 selection:text-black flex flex-col">
-        {children}
+    <html lang="en" className={`${jakarta.variable} ${jetbrainsMono.variable} scroll-smooth dark`}>
+      <body className="min-h-screen bg-[#08090d] text-[#f8fafc] font-sans antialiased selection:bg-cyan-500 selection:text-black flex flex-col transition-colors duration-300">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
