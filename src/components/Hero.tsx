@@ -9,46 +9,54 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex items-center justify-between overflow-hidden bg-black"
+      className="relative min-h-screen w-full flex items-center justify-between overflow-hidden bg-[#060a12]"
     >
       {/* Background Image: Recreated Ocean & Glowing TW Rock */}
       <div
-        className="absolute inset-0 bg-cover bg-center md:bg-[center_right] transition-transform duration-1000 scale-105"
+        className="absolute inset-0 bg-cover bg-center md:bg-[center_right] transition-transform duration-700"
         style={{ backgroundImage: "url('/hero-bg.jpg')" }}
       />
 
-      {/* Atmospheric Overlays for Depth and Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#03060c]/90 via-[#03060c]/55 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#08090d] via-transparent to-[#04070e]/40 pointer-events-none" />
+      {/* Transparent Blurred Overlay on the Left Content Area */}
+      <div
+        className="absolute inset-y-0 left-0 w-full lg:w-[58%] backdrop-blur-[14px] bg-gradient-to-r from-black/40 via-black/20 to-transparent pointer-events-none"
+        style={{
+          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+        }}
+      />
+
+      {/* Subtle bottom transition gradient */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#08090d] to-transparent pointer-events-none" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
         <div className="max-w-2xl lg:max-w-3xl">
-          {/* Eyebrow Tagline */}
+          {/* Eyebrow Tagline without shadow */}
           <div className="mb-5 sm:mb-6">
-            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300 drop-shadow-[0_0_12px_rgba(6,182,212,0.6)]">
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
               MODERN WEBSITES &nbsp;/&nbsp; SMART SOLUTIONS &nbsp;/&nbsp; GLOBAL REACH
             </span>
           </div>
 
-          {/* Main Headline matching reference */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black tracking-tight leading-[1.05] text-white uppercase mb-6 sm:mb-8">
-            <span className="block drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+          {/* Main Headline without drop shadows */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black tracking-tight leading-[1.08] text-white uppercase mb-6 sm:mb-8">
+            <span className="block">
               TURN YOUR
             </span>
-            <span className="block drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+            <span className="block">
               IDEAS INTO
             </span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-sky-400 drop-shadow-[0_0_35px_rgba(6,182,212,0.85)]">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-sky-300">
               POWERFUL
             </span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 drop-shadow-[0_0_40px_rgba(6,182,212,0.9)]">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-400">
               WEBSITES
             </span>
           </h1>
 
-          {/* Subtitle Description */}
-          <p className="text-slate-300 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-xl mb-9 sm:mb-11 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          {/* Subtitle Description without shadow */}
+          <p className="text-slate-200 text-sm sm:text-base md:text-lg font-normal leading-relaxed max-w-xl mb-9 sm:mb-11">
             We build modern, high-performance websites and digital solutions that help businesses grow, get noticed and reach the world.
           </p>
 
@@ -57,7 +65,7 @@ export default function Hero() {
             {/* Primary Button */}
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-cyan-400 via-cyan-300 to-sky-400 text-slate-950 hover:opacity-95 transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.65)] hover:shadow-[0_0_45px_rgba(6,182,212,0.9)] group cursor-pointer"
+              className="inline-flex items-center gap-3 px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-cyan-400 via-cyan-300 to-sky-400 text-slate-950 hover:opacity-95 transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.6)] hover:shadow-[0_0_45px_rgba(6,182,212,0.85)] group cursor-pointer"
             >
               <span>GET STARTED</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -66,9 +74,9 @@ export default function Hero() {
             {/* Secondary Button: WATCH OUR WORK */}
             <button
               onClick={() => setVideoModalOpen(true)}
-              className="inline-flex items-center gap-3 text-xs sm:text-sm font-semibold tracking-wider uppercase text-slate-200 hover:text-white group cursor-pointer"
+              className="inline-flex items-center gap-3 text-xs sm:text-sm font-semibold tracking-wider uppercase text-white hover:text-cyan-300 group cursor-pointer"
             >
-              <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-cyan-950/60 border border-cyan-400/40 flex items-center justify-center text-cyan-300 group-hover:border-cyan-300 group-hover:bg-cyan-900/60 shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all">
+              <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-cyan-950/60 border border-cyan-400/50 flex items-center justify-center text-cyan-300 group-hover:border-cyan-300 group-hover:bg-cyan-900/60 shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all">
                 <Play className="w-4 h-4 fill-cyan-300 translate-x-0.5" />
               </span>
               <span className="border-b border-transparent group-hover:border-cyan-400 transition-colors">
@@ -78,15 +86,15 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Scroll Down Indicator matching reference */}
+        {/* Scroll Down Indicator */}
         <div className="pt-4 flex items-center gap-3">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.9)] animate-pulse" />
-            <span className="w-8 h-[1px] bg-gradient-to-r from-cyan-400/60 to-transparent" />
+            <span className="w-8 h-[1px] bg-gradient-to-r from-cyan-400/80 to-transparent" />
           </div>
           <a
             href="#work"
-            className="text-[10px] sm:text-[11px] font-mono font-medium tracking-[0.2em] uppercase text-slate-400 hover:text-cyan-300 transition-colors"
+            className="text-[10px] sm:text-[11px] font-mono font-medium tracking-[0.2em] uppercase text-slate-300 hover:text-cyan-300 transition-colors"
           >
             SCROLL DOWN
           </a>

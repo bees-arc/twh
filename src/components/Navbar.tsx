@@ -35,21 +35,18 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
-        {/* TW Logo Emblem */}
-        <Link href="#hero" className="flex items-center gap-3 group">
-          <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-cyan-950/40 border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.35)] group-hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all">
+        {/* Theweb Official White Logo Image */}
+        <Link href="#hero" className="flex items-center group">
+          <div className="relative h-7 sm:h-8 w-32 sm:w-36 flex items-center">
             <Image
-              src="/nav-logo-icon.png"
-              alt="Theweb"
-              width={28}
-              height={28}
-              className="object-contain filter drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]"
+              src="/nav-logo-white.webp"
+              alt="Theweb Agency"
+              width={145}
+              height={34}
+              className="object-contain h-full w-auto filter drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] transition-transform duration-300 group-hover:scale-105"
               priority
             />
           </div>
-          <span className="text-xl font-bold tracking-tight text-white hidden sm:inline-block">
-            THEWEB<span className="text-cyan-400">.</span>
-          </span>
         </Link>
 
         {/* Center Desktop Navigation */}
