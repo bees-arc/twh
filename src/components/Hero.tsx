@@ -33,30 +33,34 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-28 pb-20 sm:pt-36 sm:pb-28">
         <div className="max-w-2xl lg:max-w-3xl">
           {/* Eyebrow Tagline without shadow */}
+          {/* Eyebrow Tagline without shadow */}
           <div className="mb-5 sm:mb-6">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
-              MODERN WEBSITES &nbsp;/&nbsp; SMART SOLUTIONS &nbsp;/&nbsp; GLOBAL REACH
+              TECHNOLOGY SHOULD BE USEFUL &nbsp;/&nbsp; GLOBAL REACH
             </span>
           </div>
 
-          {/* Main Headline without drop shadows */}
+          {/* Main Headline with exact 4-line punchy rhythm */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black tracking-tight leading-[1.08] text-white uppercase mb-6 sm:mb-8">
             <span className="block">
-              TURN YOUR
+              FROM IDEA
             </span>
             <span className="block">
-              IDEAS INTO
+              TO SOMETHING
             </span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-sky-300">
-              POWERFUL
+              PEOPLE CAN
             </span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-400">
-              WEBSITES
+              ACTUALLY USE.
             </span>
           </h1>
 
-          {/* Subtitle Description without shadow */}
+          {/* Subtitle Description */}
           <p className="text-slate-200 text-sm sm:text-base md:text-lg font-normal leading-relaxed max-w-xl mb-9 sm:mb-11">
+            <strong className="text-white font-semibold block text-lg sm:text-xl mb-1 text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-cyan-300">
+              Technology should be useful.
+            </strong>
             We build modern, high-performance websites and digital solutions that help businesses grow, get noticed and reach the world.
           </p>
 
