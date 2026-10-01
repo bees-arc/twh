@@ -20,7 +20,7 @@ export default function Hero() {
           playsInline
           preload="auto"
           poster="/hero-poster.webp"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
         >
           <source
             src="/hero-video.mp4"
@@ -31,7 +31,7 @@ export default function Hero() {
 
       {/* Transparent Blurred Overlay on the Left Content Area */}
       <div
-        className="absolute inset-y-0 left-0 w-full lg:w-[58%] backdrop-blur-[14px] bg-gradient-to-r from-black/40 via-black/20 to-transparent pointer-events-none"
+        className="absolute inset-y-0 left-0 w-[70%] sm:w-[60%] lg:w-[58%] backdrop-blur-[10px] sm:backdrop-blur-[14px] bg-gradient-to-r from-black/40 via-black/20 to-transparent pointer-events-none"
         style={{
           maskImage: "linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
           WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
