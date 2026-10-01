@@ -11,11 +11,21 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen w-full flex items-center justify-between overflow-hidden bg-[#060a12]"
     >
-      {/* Background Image: Recreated Ocean & Glowing TW Rock */}
-      <div
-        className="absolute inset-0 bg-cover bg-center md:bg-[center_right] transition-transform duration-700"
-        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
-      />
+      {/* Hero Background Video */}
+      <div className="absolute inset-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        >
+          <source
+            src="/hf_20261001_065038_e34e1b3d-b019-4d18-bf7b-9edf9a08df33.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
 
       {/* Transparent Blurred Overlay on the Left Content Area */}
       <div
