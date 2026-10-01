@@ -4,23 +4,11 @@ import { useState } from "react";
 import { ArrowRight, CheckCircle2, Mail, Sparkles } from "lucide-react";
 
 export default function ContactCTA() {
-  const [projectType, setProjectType] = useState<string>("Digital Product");
-  const [budget, setBudget] = useState<string>("$5k – $15k");
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const projectTypes = [
-    "Digital Product",
-    "Website",
-    "Brand & Experience",
-    "AI & Automation",
-    "Consultation",
-  ];
-
-  const budgetOptions = ["< $5k", "$5k – $15k", "$15k – $30k", "$30k+"];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,52 +97,6 @@ export default function ContactCTA() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Select Service Type */}
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider font-mono text-slate-400 mb-3 font-semibold">
-                      I&apos;m interested in:
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {projectTypes.map((type) => (
-                        <button
-                          type="button"
-                          key={type}
-                          onClick={() => setProjectType(type)}
-                          className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                            projectType === type
-                              ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
-                              : "bg-[#131728] text-slate-300 hover:bg-[#1a2035] hover:text-white border border-white/[0.06]"
-                          }`}
-                        >
-                          {type}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Estimated Budget */}
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider font-mono text-slate-400 mb-3 font-semibold">
-                      Estimated Project Budget:
-                    </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                      {budgetOptions.map((opt) => (
-                        <button
-                          type="button"
-                          key={opt}
-                          onClick={() => setBudget(opt)}
-                          className={`px-3 py-2 rounded-xl text-xs font-medium text-center transition-all cursor-pointer ${
-                            budget === opt
-                              ? "bg-cyan-400 text-slate-950 font-bold shadow-md shadow-cyan-400/20"
-                              : "bg-[#131728] text-slate-300 hover:bg-[#1a2035] hover:text-white border border-white/[0.06]"
-                          }`}
-                        >
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
                   {/* Name & Email Fields with toned-down colors */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
