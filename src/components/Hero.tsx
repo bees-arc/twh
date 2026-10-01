@@ -18,10 +18,12 @@ export default function Hero() {
           loop
           muted
           playsInline
+          preload="auto"
+          poster="/hero-poster.webp"
           className="absolute inset-0 w-full h-full object-cover object-center"
         >
           <source
-            src="/hf_20261001_065038_e34e1b3d-b019-4d18-bf7b-9edf9a08df33.mp4"
+            src="/hero-video.mp4"
             type="video/mp4"
           />
         </video>
