@@ -252,10 +252,10 @@ export default function Navbar() {
             <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1">
               <span>Sri Lanka ⇄ Norway</span>
               <a
-                href="mailto:hello@theweb.agency"
+                href="mailto:info@theweb.lk"
                 className="hover:underline text-cyan-600 dark:text-cyan-400"
               >
-                hello@theweb.agency
+                info@theweb.lk
               </a>
             </div>
           </div>

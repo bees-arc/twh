@@ -150,10 +150,10 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs">
               <li>
                 <a
-                  href="mailto:hello@theweb.agency"
+                  href="mailto:info@theweb.lk"
                   className="text-slate-300 hover:text-white transition-colors font-medium"
                 >
-                  hello@theweb.agency
+                  info@theweb.lk
                 </a>
               </li>
               <li>

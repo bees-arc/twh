@@ -85,7 +85,8 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
-            {/* Secondary Button: WATCH OUR WORK */}
+            {/* Secondary Button: WATCH OUR WORK (Commented out for now) */}
+            {/*
             <button
               onClick={() => setVideoModalOpen(true)}
               className="inline-flex items-center gap-3 text-xs sm:text-sm font-semibold tracking-wider uppercase text-white hover:text-cyan-300 group cursor-pointer"
@@ -97,6 +98,7 @@ export default function Hero() {
                 WATCH OUR WORK
               </span>
             </button>
+            */}
           </div>
         </div>
 

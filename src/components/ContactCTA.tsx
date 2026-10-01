@@ -74,11 +74,11 @@ export default function ContactCTA() {
                 Direct Email Inquiry
               </span>
               <a
-                href="mailto:hello@theweb.agency"
+                href="mailto:info@theweb.lk"
                 className="text-base sm:text-lg font-bold text-white hover:text-cyan-400 transition-colors flex items-center gap-2"
               >
                 <Mail className="w-4 h-4 text-cyan-400" />
-                <span>hello@theweb.agency</span>
+                <span>info@theweb.lk</span>
               </a>
             </div>
           </div>
