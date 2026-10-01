@@ -10,9 +10,8 @@ export default function ThewebApproach() {
       icon: HelpCircle,
       tag: "Purpose First",
       text: "Before thinking about screens, features or technology, the reason behind the project needs to be clear.",
-      questions: ["What is the problem?", "Who is it for?", "What should it achieve?"],
+      questions: ["Define the core problem", "Identify target users", "Clarify measurable outcomes"],
       accent: "text-blue-600 dark:text-blue-400",
-      border: "border-blue-500/20",
     },
     {
       num: "02",
@@ -22,7 +21,6 @@ export default function ThewebApproach() {
       text: "The first idea is rarely the final one. Different directions are explored, tested and challenged before settling on something worth building.",
       questions: ["Challenge assumptions early", "Prototype alternative journeys", "Validate with real user context"],
       accent: "text-purple-600 dark:text-purple-400",
-      border: "border-purple-500/20",
     },
     {
       num: "03",
@@ -32,7 +30,6 @@ export default function ThewebApproach() {
       text: "Good design should make complicated things feel simple. From a website to a digital product, every interaction should have a reason to exist.",
       questions: ["Eliminate visual clutter", "Predictable mental models", "Purpose-driven micro-interactions"],
       accent: "text-cyan-600 dark:text-cyan-400",
-      border: "border-cyan-500/20",
     },
     {
       num: "04",
@@ -42,7 +39,6 @@ export default function ThewebApproach() {
       text: "There is no favourite technology for the sake of having one. WordPress, React, Next.js, AI, automation or something built from scratch, the tools depend on what the project actually needs.",
       questions: ["Engineered for longevity", "Cost-effective scalability", "Performance matched to need"],
       accent: "text-amber-600 dark:text-amber-400",
-      border: "border-amber-500/20",
     },
     {
       num: "05",
@@ -52,7 +48,6 @@ export default function ThewebApproach() {
       text: "The first version doesn't have to be perfect. Launch something useful. See how people respond. Learn from it. Make it better. That mindset has shaped the work from the beginning, from early experiments and student projects to international digital products and businesses.",
       questions: ["Fast feedback loops", "Live telemetry over guesswork", "The curiosity stays the same"],
       accent: "text-emerald-600 dark:text-emerald-400",
-      border: "border-emerald-500/20",
     },
   ];
 
@@ -86,7 +81,7 @@ export default function ThewebApproach() {
             return (
               <div
                 key={p.num}
-                className={`bg-white dark:bg-[#0e121f] rounded-3xl p-7 sm:p-8 flex flex-col justify-between border border-slate-200 dark:${p.border} shadow-sm dark:shadow-none transition-all duration-300 hover:shadow-lg dark:hover:border-white/20 ${
+                className={`bg-white dark:bg-[#0e121f] rounded-3xl p-7 sm:p-8 flex flex-col justify-between border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none transition-all duration-300 hover:shadow-lg dark:hover:border-white/20 ${
                   isLast ? "md:col-span-2 lg:col-span-2" : ""
                 }`}
               >
