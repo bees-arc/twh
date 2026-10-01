@@ -1,10 +1,42 @@
 "use client";
 
-import { useState } from "react";
-import { Milestone, Award, Globe, HeartHandshake, Rocket, Sparkles } from "lucide-react";
+import { useState, useRef } from "react";
+import {
+  Milestone,
+  Award,
+  Globe,
+  HeartHandshake,
+  Rocket,
+  Sparkles,
+  ArrowLeft,
+  ArrowRight,
+} from "lucide-react";
 
 export default function AboutStory() {
   const [selectedMilestone, setSelectedMilestone] = useState<number>(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const milestoneButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const handleSelectMilestone = (idx: number) => {
+    setSelectedMilestone(idx);
+    milestoneButtonRefs.current[idx]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  };
+
+  const handlePrev = () => {
+    if (selectedMilestone > 0) {
+      handleSelectMilestone(selectedMilestone - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedMilestone < timeline.length - 1) {
+      handleSelectMilestone(selectedMilestone + 1);
+    }
+  };
 
   const timeline = [
     {
@@ -102,22 +134,43 @@ export default function AboutStory() {
           </p>
         </div>
 
-        {/* Timeline Navigation Strip */}
-        <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-10 no-scrollbar">
-          {timeline.map((item, idx) => (
-            <button
-              key={item.year}
-              onClick={() => setSelectedMilestone(idx)}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                selectedMilestone === idx
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-md"
-                  : "bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-white/[0.04] dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.06]"
-              }`}
-            >
-              <span>{item.year}</span>
-              <span className="ml-2 opacity-60 font-normal">| {item.title}</span>
-            </button>
-          ))}
+        {/* Timeline Navigation Strip with Expand-on-hover Year Pills */}
+        <div className="relative mb-10">
+          <div
+            ref={scrollContainerRef}
+            className="flex flex-wrap items-center gap-2.5 sm:gap-3 py-1"
+          >
+            {timeline.map((item, idx) => {
+              const isSelected = selectedMilestone === idx;
+              return (
+                <button
+                  key={item.year}
+                  ref={(el) => {
+                    milestoneButtonRefs.current[idx] = el;
+                  }}
+                  onClick={() => handleSelectMilestone(idx)}
+                  className={`group relative px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer flex items-center ${
+                    isSelected
+                      ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-md ring-2 ring-slate-900/10 dark:ring-white/20"
+                      : "bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-white/[0.04] dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.06]"
+                  }`}
+                >
+                  <span className="font-mono">{item.year}</span>
+                  {/* Expands to reveal title on hover or when selected */}
+                  <span
+                    className={`overflow-hidden transition-all duration-300 ease-out whitespace-nowrap font-normal inline-block ${
+                      isSelected
+                        ? "max-w-[500px] opacity-100 ml-1.5 pr-1"
+                        : "max-w-0 opacity-0 group-hover:max-w-[500px] group-hover:opacity-100 group-hover:ml-1.5 group-hover:pr-1"
+                    }`}
+                  >
+                    <span className="opacity-50 mr-1.5">|</span>
+                    <span>{item.title}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Featured Milestone Showcase */}
@@ -152,16 +205,38 @@ export default function AboutStory() {
                   </div>
                 </div>
 
-                <div className="lg:w-80 shrink-0 p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none">
-                  <div className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6" />
+                <div className="lg:w-80 shrink-0 p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none flex flex-col justify-between">
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">Milestone Focus</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal mb-4">
+                      {current.tag}
+                    </p>
+                    <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500 mb-6">
+                      Step {selectedMilestone + 1} of {timeline.length} in Theweb origin story
+                    </div>
                   </div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">Milestone Focus</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal mb-4">
-                    {current.tag}
-                  </p>
-                  <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
-                    Step {selectedMilestone + 1} of {timeline.length} in Theweb origin story
+
+                  {/* Prev / Next controls inside the card */}
+                  <div className="flex items-center gap-2 pt-4 border-t border-slate-100 dark:border-white/[0.06]">
+                    <button
+                      onClick={handlePrev}
+                      disabled={selectedMilestone === 0}
+                      className="flex-1 py-2 px-3 rounded-xl border border-slate-200 dark:border-white/[0.08] text-xs font-semibold text-slate-700 dark:text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-100 dark:hover:bg-white/[0.05] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <ArrowLeft className="w-3.5 h-3.5" />
+                      <span>Previous</span>
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      disabled={selectedMilestone === timeline.length - 1}
+                      className="flex-1 py-2 px-3 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 text-xs font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                    >
+                      <span>Next</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
               </div>
