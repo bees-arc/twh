@@ -4,7 +4,7 @@ import FeaturedWork from "@/components/FeaturedWork";
 import WhatWeDo from "@/components/WhatWeDo";
 import HowWeWork from "@/components/HowWeWork";
 import ThewebApproach from "@/components/ThewebApproach";
-import AboutStory from "@/components/AboutStory";
+import AboutIntro from "@/components/AboutIntro";
 import Founder from "@/components/Founder";
 import Technology from "@/components/Technology";
 import Partners from "@/components/Partners";
@@ -23,6 +23,9 @@ export default function Home() {
         {/* Hero Section with Live Stats & Statement */}
         <Hero />
 
+        {/* About Intro Section with link to full story */}
+        <AboutIntro />
+
         {/* Featured Work & Interactive Case Studies */}
         <FeaturedWork />
 
@@ -34,9 +37,6 @@ export default function Home() {
 
         {/* Theweb Approach: 5 Core Principles */}
         <ThewebApproach />
-
-        {/* About Theweb: Story & Interactive Milestones (2019 - Today) */}
-        <AboutStory />
 
         {/* Founder Spotlight & Detailed Background Modal */}
         <Founder />
