@@ -20,7 +20,7 @@ export default function Hero() {
           playsInline
           preload="auto"
           poster="/hero-poster.webp"
-          className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
+          className="absolute inset-0 w-full h-full object-cover object-[70%_center] md:object-center"
         >
           <source
             src="/hero-video.mp4"
@@ -29,14 +29,17 @@ export default function Hero() {
         </video>
       </div>
 
-      {/* Transparent Blurred Overlay on the Left Content Area */}
+      {/* Transparent Blurred Overlay on the Left Content Area (Desktop) */}
       <div
-        className="absolute inset-y-0 left-0 w-[70%] sm:w-[60%] lg:w-[58%] backdrop-blur-[10px] sm:backdrop-blur-[14px] bg-gradient-to-r from-black/40 via-black/20 to-transparent pointer-events-none"
+        className="hidden md:block absolute inset-y-0 left-0 w-[58%] backdrop-blur-[14px] bg-gradient-to-r from-black/40 via-black/20 to-transparent pointer-events-none"
         style={{
           maskImage: "linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
           WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
         }}
       />
+
+      {/* Mobile Vignette: ensures text is readable while leaving rock & logo crystal clear */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-[#08090d]/90 pointer-events-none" />
 
       {/* Subtle bottom transition gradient */}
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#08090d] to-transparent pointer-events-none" />
