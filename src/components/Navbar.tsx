@@ -44,10 +44,12 @@ export default function Navbar() {
   const isLight = theme === "light";
   const shouldShowSolidBg = scrolled || !isHomePage;
 
-  const logoSrc = isLight && shouldShowSolidBg ? "/nav-logo-dark.webp" : "/nav-logo-white.webp";
+  const isLightNavbar = isLight && shouldShowSolidBg;
+  const logoSrc = isLightNavbar ? "/logo%20blue.svg" : "/logo%20white.svg";
 
   return (
-    <header
+    <>
+      <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         shouldShowSolidBg
           ? isLight
@@ -142,18 +144,23 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* FULL-SCREEN MOBILE MENU OVERLAY */}
+      {/* FULL-SCREEN 100% SOLID OPAQUE MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
         <div
-          className={`fixed inset-0 z-50 flex flex-col justify-between p-6 sm:p-10 transition-all duration-300 md:hidden animate-in fade-in zoom-in-95 ${
+          className={`fixed inset-0 z-[9999] w-full h-[100dvh] flex flex-col justify-between p-6 sm:p-10 md:hidden overflow-y-auto ${
             isLight
               ? "bg-white text-slate-900"
-              : "bg-[#06080e] text-white"
+              : "bg-[#07090e] text-white"
           }`}
+          style={{
+            backgroundColor: isLight ? "#ffffff" : "#07090e",
+            opacity: 1,
+          }}
         >
           {/* Top Bar inside Full Screen Menu */}
-          <div className="flex items-center justify-between pb-6 border-b border-slate-200/60 dark:border-white/[0.08]">
+          <div className="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-white/[0.08]">
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
@@ -161,7 +168,7 @@ export default function Navbar() {
             >
               <div className="relative h-8 w-36 flex items-center">
                 <Image
-                  src={isLight ? "/nav-logo-dark.webp" : "/nav-logo-white.webp"}
+                  src={isLight ? "/logo%20blue.svg" : "/logo%20white.svg"}
                   alt="Theweb"
                   width={140}
                   height={32}
@@ -239,7 +246,7 @@ export default function Navbar() {
           </div>
 
           {/* Bottom Area */}
-          <div className="pt-6 border-t border-slate-200/60 dark:border-white/[0.08] flex flex-col gap-4">
+          <div className="pt-6 border-t border-slate-200 dark:border-white/[0.08] flex flex-col gap-4">
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
@@ -261,6 +268,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Award, Quote, X, Mail } from "lucide-react";
+import { ArrowUpRight, Quote, X } from "lucide-react";
 
 export default function Founder() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,57 +24,59 @@ export default function Founder() {
 
         {/* Founder Card */}
         <div className="bg-white dark:bg-[#0e121f] rounded-3xl p-8 sm:p-12 border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             {/* Visual Column */}
-            <div className="lg:col-span-5 flex flex-col items-center sm:items-start">
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border border-slate-200 dark:border-white/[0.15] bg-gradient-to-br from-blue-100 dark:from-blue-900/40 via-purple-100 dark:via-purple-900/20 to-slate-200 dark:to-slate-900 shadow-lg flex items-center justify-center group mb-6">
-                <div className="text-center p-6">
-                  <div className="w-20 h-20 mx-auto rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-3xl font-bold text-blue-600 dark:text-white mb-3">
-                    TW
-                  </div>
-                  <span className="text-xs font-mono text-slate-700 dark:text-slate-300 uppercase tracking-widest block font-semibold">
-                    Theweb Founder
-                  </span>
-                  <span className="text-[11px] text-blue-600 dark:text-blue-400 block mt-1">
-                    Imagine Cup World Finalist
+            <div className="lg:col-span-5 flex flex-col justify-between items-center sm:items-start h-full">
+              <div className="relative w-full max-w-[280px] sm:max-w-[320px] h-[340px] sm:h-[390px] rounded-3xl overflow-hidden border border-slate-200 dark:border-white/[0.15] bg-slate-100 dark:bg-slate-900 shadow-xl group mb-6 lg:mb-0">
+                <Image
+                  src="/Croped.png"
+                  alt="Ravindu Dananjith - Theweb Founder"
+                  fill
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 280px, 320px"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-xs font-mono text-white tracking-wider">
+                    Ravindu Dananjith
                   </span>
                 </div>
               </div>
 
-              {/* Accreditations */}
-              <div className="space-y-2 w-full max-w-xs">
-                <div className="flex items-center gap-2 text-xs text-slate-800 dark:text-slate-300 bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] p-2.5 rounded-xl">
-                  <Award className="w-4 h-4 text-amber-500 dark:text-amber-400 shrink-0" />
-                  <span>Microsoft Imagine Cup SEA Champion</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-slate-800 dark:text-slate-300 bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] p-2.5 rounded-xl">
-                  <Award className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-                  <span>90+ International Deployments</span>
-                </div>
+              {/* Founder Identity - Aligned with buttons on the right */}
+              <div className="text-center sm:text-left w-full max-w-[320px] pt-4 lg:pt-0">
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Ravindu Dananjith
+                </h3>
+                <p className="text-xs sm:text-sm font-semibold text-cyan-600 dark:text-cyan-400 mt-1 uppercase tracking-wider">
+                  Founder &amp; UX Lead
+                </p>
               </div>
             </div>
 
             {/* Content Column */}
-            <div className="lg:col-span-7">
-              <Quote className="w-10 h-10 text-blue-600/20 dark:text-blue-400/30 mb-4" />
+            <div className="lg:col-span-7 flex flex-col justify-between h-full">
+              <div>
+                <Quote className="w-10 h-10 text-blue-600/20 dark:text-blue-400/30 mb-4" />
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
-                &quot;The tools continue to change. The curiosity stays the same.&quot;
-              </h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3">
+                  &quot;The tools continue to change. The curiosity stays the same.&quot;
+                </h3>
 
-              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-                Theweb began not in a corporate boardroom, but out of genuine fascination for what happens when thoughtful design meets purposeful engineering. From building early hackathon concepts in Sri Lanka to representing the nation as a Southeast Asia Champion and World Finalist in the Microsoft Imagine Cup, the goal was always clarity over novelty.
-              </p>
+                <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                  Theweb began not in a corporate boardroom, but out of genuine fascination for what happens when thoughtful design meets purposeful engineering. From building early hackathon concepts in Sri Lanka to representing the nation as a Southeast Asia Champion and World Finalist in the Microsoft Imagine Cup, the goal was always clarity over novelty.
+                </p>
 
-              <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed mb-8">
-                Later, partnering with Babette on Norwegian enterprise platforms taught us that world-class digital work can originate from anywhere when grounded in empathy, transparent communication, and relentless craft.
-              </p>
+                <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed mb-8">
+                  Later, partnering with Babette on Norwegian enterprise platforms taught us that world-class digital work can originate from anywhere when grounded in empathy, transparent communication, and relentless craft.
+                </p>
+              </div>
 
               {/* Actions & Read More Trigger */}
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all cursor-pointer shadow-md"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all cursor-pointer shadow-md"
                 >
                   <span>Read Full Founder Story</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -82,7 +84,7 @@ export default function Founder() {
 
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.1] transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.1] transition-all"
                 >
                   <span>Connect Directly</span>
                 </a>
@@ -104,16 +106,28 @@ export default function Founder() {
               <X className="w-5 h-5" />
             </button>
 
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 uppercase tracking-wider">
-              The Founder Narrative
-            </span>
-
-            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-4 mb-2">
-              From Sri Lanka to Norway & Beyond
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
-              How curiosity, community, and purpose gave birth to Theweb Agency.
-            </p>
+            <div className="flex items-center gap-4 mb-6 pr-10">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-slate-200 dark:border-white/20 shrink-0 shadow-md">
+                <Image
+                  src="/Croped.png"
+                  alt="Theweb Founder"
+                  fill
+                  className="object-cover object-top"
+                  sizes="80px"
+                />
+              </div>
+              <div>
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 uppercase tracking-wider">
+                  The Founder Narrative
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">
+                  From Sri Lanka to Norway & Beyond
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+                  How curiosity, community, and purpose gave birth to Theweb Agency.
+                </p>
+              </div>
+            </div>
 
             <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
               <p>
