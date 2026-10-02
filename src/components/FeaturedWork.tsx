@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowUpRight, Award, X, Sparkles, CheckCircle, Eye, Globe2, Layers } from "lucide-react";
 
 export interface FeaturedProject {
@@ -204,6 +204,19 @@ export const featuredProjects: FeaturedProject[] = [
 export default function FeaturedWork() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeModalStudy, setActiveModalStudy] = useState<FeaturedProject | null>(null);
+  const [activeModalTab, setActiveModalTab] = useState<"story" | "specs">("story");
+
+  useEffect(() => {
+    if (activeModalStudy) {
+      document.body.style.overflow = "hidden";
+      setActiveModalTab("story");
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeModalStudy]);
 
   const categories = ["All", "Healthcare", "Education", "AI & Robotics", "Tourism", "Automotive"];
 
@@ -259,7 +272,7 @@ export default function FeaturedWork() {
             <div
               key={project.id}
               onClick={() => setActiveModalStudy(project)}
-              className="group relative rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/13] bg-black border border-slate-800 dark:border-white/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-end"
+              className="group relative rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/13] bg-white dark:bg-black border border-slate-200/90 dark:border-white/10 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-end"
             >
               {/* Card Poster Image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -270,40 +283,40 @@ export default function FeaturedWork() {
                 loading="lazy"
               />
 
-              {/* Permanent soft gradient at bottom for readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none transition-opacity duration-300" />
+              {/* Permanent soft gradient at bottom: Soft translucent white in light theme, Black in dark theme */}
+              <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/30 to-transparent dark:from-black/90 dark:via-black/35 dark:to-transparent pointer-events-none transition-opacity duration-300" />
 
-              {/* Normal State: Bottom Title & Country (Exact match to reference photo) */}
+              {/* Normal State: Bottom Title & Country */}
               <div className="relative z-10 p-5 sm:p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4 pointer-events-none">
-                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug">
+                <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight leading-snug">
                   {project.title}
                 </h3>
-                <p className="text-xs text-slate-300 font-normal mt-0.5">
+                <p className="text-xs text-slate-700 dark:text-slate-300 font-medium mt-0.5">
                   {project.country}
                 </p>
               </div>
 
-              {/* Hover State: Glassmorphism overlay with short description & View button */}
-              <div className="absolute inset-0 z-20 p-5 sm:p-6 bg-black/80 backdrop-blur-md flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto">
+              {/* Hover State: Frosted glass overlay (Translucent white in light theme, Black in dark theme) */}
+              <div className="absolute inset-0 z-20 p-5 sm:p-6 bg-white/75 dark:bg-black/80 backdrop-blur-md flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto">
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-400 mb-1">
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-600 dark:text-blue-400 mb-1">
                     <Globe2 className="w-3 h-3" />
                     <span>{project.country}</span>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight leading-snug mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-xs text-slate-300 line-clamp-3 leading-relaxed mb-4">
+                  <p className="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed mb-4">
                     {project.shortDesc}
                   </p>
 
-                  {/* View Project Button */}
+                  {/* View Project Button: Dark button on light overlay, Light button on dark overlay */}
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       setActiveModalStudy(project);
                     }}
-                    className="w-full inline-flex items-center justify-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold bg-white text-slate-950 hover:bg-blue-400 hover:text-black transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-900 text-white hover:bg-blue-600 dark:bg-white dark:text-slate-950 dark:hover:bg-blue-400 dark:hover:text-black transition-all shadow-md active:scale-95 cursor-pointer"
                   >
                     <Eye className="w-3.5 h-3.5" />
                     <span>View Project</span>
@@ -316,22 +329,22 @@ export default function FeaturedWork() {
         </div>
       </div>
 
-      {/* Case Study Detail Modal ("wadi wisthraa") */}
+      {/* Case Study Detail Modal ("wadi wisthraa" - Tabbed, No Ugly Scrollbar) */}
       {activeModalStudy && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in">
-          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#0f1320] text-slate-900 dark:text-white rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-white/20 shadow-2xl">
-            {/* Close Button */}
-            <button
-              onClick={() => setActiveModalStudy(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
-              aria-label="Close modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-xl animate-in fade-in">
+          <div className="relative w-full max-w-3xl max-h-[92vh] flex flex-col bg-white dark:bg-[#0d101c] text-slate-900 dark:text-white rounded-3xl border border-slate-200 dark:border-white/15 shadow-2xl overflow-hidden">
+            {/* Modal Header */}
+            <div className="p-6 sm:p-8 pb-4 border-b border-slate-100 dark:border-white/[0.08] relative">
+              {/* Close Button */}
+              <button
+                onClick={() => setActiveModalStudy(null)}
+                className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            {/* Header info */}
-            <div className="mb-6 pr-10">
-              <div className="flex flex-wrap items-center gap-2 mb-3">
+              <div className="flex flex-wrap items-center gap-2 mb-2 pr-10">
                 <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                   {activeModalStudy.category}
                 </span>
@@ -347,119 +360,150 @@ export default function FeaturedWork() {
                 )}
               </div>
 
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
                 {activeModalStudy.title}
               </h2>
-              <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base mt-1">
+              <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">
                 {activeModalStudy.tagline}
               </p>
-            </div>
 
-            {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] mb-8">
-              <div>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Client</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
-                  {activeModalStudy.client}
-                </span>
-              </div>
-              <div>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Timeline</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
-                  {activeModalStudy.year}
-                </span>
-              </div>
-              <div>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Key Result</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
-                  {activeModalStudy.metrics}
-                </span>
-              </div>
-              <div>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Deliverables</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
-                  {activeModalStudy.deliverables.length} core outputs
-                </span>
+              {/* Interactive Tabs Header - Eliminates long single-page scroll */}
+              <div className="flex items-center gap-2 mt-5">
+                <button
+                  onClick={() => setActiveModalTab("story")}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                    activeModalTab === "story"
+                      ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-sm"
+                      : "bg-slate-100 hover:bg-slate-200 text-slate-600 dark:bg-white/[0.05] dark:text-slate-400 dark:hover:text-white"
+                  }`}
+                >
+                  The Story & Solution
+                </button>
+                <button
+                  onClick={() => setActiveModalTab("specs")}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                    activeModalTab === "specs"
+                      ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 shadow-sm"
+                      : "bg-slate-100 hover:bg-slate-200 text-slate-600 dark:bg-white/[0.05] dark:text-slate-400 dark:hover:text-white"
+                  }`}
+                >
+                  Deliverables & Tech Stack
+                </button>
               </div>
             </div>
 
-            {/* Problem / Solution / Impact */}
-            <div className="space-y-6 mb-8">
-              <div className="border-l-2 border-red-500/60 pl-4 py-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
-                  The Challenge
-                </h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {activeModalStudy.fullStory.problem}
-                </p>
-              </div>
+            {/* Modal Body - Smoothly scrollable with NO visible scrollbar */}
+            <div className="p-6 sm:p-8 overflow-y-auto no-scrollbar flex-1">
+              {activeModalTab === "story" ? (
+                <div className="space-y-5 animate-in fade-in duration-200">
+                  {/* Quick Specs Strip */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.06]">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block">Client</span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{activeModalStudy.client}</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block">Timeline</span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{activeModalStudy.year}</span>
+                    </div>
+                    <div className="col-span-2 sm:col-span-1">
+                      <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block">Key Result</span>
+                      <span className="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400">{activeModalStudy.metrics}</span>
+                    </div>
+                  </div>
 
-              <div className="border-l-2 border-blue-500/60 pl-4 py-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
-                  The Approach & Solution
-                </h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {activeModalStudy.fullStory.solution}
-                </p>
-              </div>
+                  {/* Challenge */}
+                  <div className="p-4 rounded-2xl bg-red-500/[0.04] border-l-4 border-red-500 dark:bg-red-500/[0.05]">
+                    <h4 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-1">
+                      The Challenge
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {activeModalStudy.fullStory.problem}
+                    </p>
+                  </div>
 
-              <div className="border-l-2 border-emerald-500/60 pl-4 py-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
-                  Impact & Outcome
-                </h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {activeModalStudy.fullStory.impact}
-                </p>
-              </div>
+                  {/* Approach & Solution */}
+                  <div className="p-4 rounded-2xl bg-blue-500/[0.04] border-l-4 border-blue-500 dark:bg-blue-500/[0.05]">
+                    <h4 className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">
+                      The Approach & Solution
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {activeModalStudy.fullStory.solution}
+                    </p>
+                  </div>
+
+                  {/* Impact & Outcome */}
+                  <div className="p-4 rounded-2xl bg-emerald-500/[0.04] border-l-4 border-emerald-500 dark:bg-emerald-500/[0.05]">
+                    <h4 className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
+                      Impact & Outcome
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {activeModalStudy.fullStory.impact}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-6 animate-in fade-in duration-200">
+                  {/* Key Deliverables */}
+                  <div>
+                    <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
+                      Key Deliverables ({activeModalStudy.deliverables.length} core outputs)
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {activeModalStudy.deliverables.map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-center gap-2.5 text-xs text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.07] px-3.5 py-2.5 rounded-xl"
+                        >
+                          <CheckCircle className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                          <span className="font-medium">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Technologies & Tools */}
+                  <div>
+                    <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
+                      Technologies & Stack
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {activeModalStudy.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs font-mono text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.06] px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/[0.08]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Impact Highlight Banner */}
+                  <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-transparent border border-blue-500/20">
+                    <span className="text-[11px] uppercase tracking-wider font-bold text-blue-600 dark:text-blue-400 block mb-1">
+                      Headline Metric
+                    </span>
+                    <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                      {activeModalStudy.metrics}
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
-            {/* Deliverables List */}
-            <div className="mb-8">
-              <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
-                Key Deliverables
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {activeModalStudy.deliverables.map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex items-center gap-1.5 text-xs text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] px-3 py-1.5 rounded-lg"
-                  >
-                    <CheckCircle className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Tech Stack */}
-            <div className="mb-8">
-              <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
-                Technologies & Tools
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {activeModalStudy.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-[11px] font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/[0.04] px-2.5 py-1 rounded-md border border-slate-200 dark:border-white/[0.06]"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Modal Bottom CTA */}
-            <div className="pt-6 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between">
+            {/* Modal Bottom CTA Bar */}
+            <div className="p-5 sm:p-6 border-t border-slate-100 dark:border-white/[0.08] bg-slate-50/50 dark:bg-white/[0.02] flex items-center justify-between">
               <button
                 onClick={() => setActiveModalStudy(null)}
-                className="text-xs text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white cursor-pointer"
+                className="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white cursor-pointer"
               >
                 ← Back to projects
               </button>
               <a
                 href="#contact"
                 onClick={() => setActiveModalStudy(null)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-opacity shadow-sm"
               >
                 <span>Discuss a similar project</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -471,3 +515,4 @@ export default function FeaturedWork() {
     </section>
   );
 }
+
