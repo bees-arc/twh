@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Award, ExternalLink, X, Layers, Sparkles, CheckCircle } from "lucide-react";
+import { ArrowUpRight, Award, X, Sparkles, CheckCircle, Eye, Globe2, Layers } from "lucide-react";
 
-interface CaseStudy {
+export interface FeaturedProject {
   id: string;
   title: string;
-  category: "Digital Products" | "Websites" | "Brand & Experience" | "AI & Social Impact";
+  country: string;
+  category: string;
+  image: string;
   tagline: string;
-  summary: string;
+  shortDesc: string;
   badge?: string;
   metrics: string;
   client: string;
@@ -22,134 +24,226 @@ interface CaseStudy {
   };
 }
 
-const caseStudies: CaseStudy[] = [
+export const featuredProjects: FeaturedProject[] = [
   {
-    id: "habarala",
-    title: "Habarala — AgriTech Platform",
-    category: "AI & Social Impact",
-    tagline: "Microsoft Imagine Cup Southeast Asia Champion & World Finalist",
-    badge: "Imagine Cup World Finalist",
-    summary:
-      "Bringing design and technology together to solve real-world agricultural problems. What started as an exploration became an internationally acclaimed platform.",
-    metrics: "World Finalist • SEA Champion",
-    client: "Imagine Cup / Global Agritech",
-    year: "2021 – 2022",
-    deliverables: ["Product Strategy", "UX/UI Architecture", "Mobile App", "AI Crop Diagnostics", "Field Research"],
-    techStack: ["Next.js", "Computer Vision", "Python", "React Native", "Cloud APIs"],
-    fullStory: {
-      problem:
-        "Rural farmers face severe crop failure due to late disease identification, complicated technical tools, and language barriers that standard agritech apps fail to address.",
-      solution:
-        "We built Habarala with a hyper-accessible vernacular interface, instant AI camera diagnostics, and actionable prevention pathways that require zero technical literacy.",
-      impact:
-        "Awarded Southeast Asia Region Champion and represented the region on the global stage at the Microsoft Imagine Cup World Finals, proving technology is most powerful when it is genuinely useful.",
-    },
-  },
-  {
-    id: "norway-initiatives",
-    title: "Norwegian Business Digital Suite",
-    category: "Websites",
-    tagline: "90+ Digital & UX Projects for Norwegian Enterprises",
-    badge: "90+ Projects Delivered",
-    summary:
-      "Long-term international collaboration with Babette and Norwegian companies, delivering bespoke digital products, Scandinavian UX simplicity, and reliable web platforms.",
-    metrics: "90+ Live Deployments",
-    client: "Norwegian Enterprises & Babette",
-    year: "2022 – 2024",
-    deliverables: ["High-Conversion Websites", "UX Audits", "E-commerce Platforms", "Brand Guidelines"],
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Headless CMS", "Figma"],
-    fullStory: {
-      problem:
-        "Fast-growing Scandinavian businesses required rapid turnarounds on modern web experiences without sacrificing minimalist aesthetic rigor and strict accessibility compliance.",
-      solution:
-        "Established a cross-border design-and-code pipeline combining thoughtful user journeys, clean codebases, and seamless performance optimization.",
-      impact:
-        "Successfully delivered across 90+ projects in varied domains, forging a trusted international partnership that ultimately laid the foundation for Theweb Agency.",
-    },
-  },
-  {
-    id: "vibe-crm",
-    title: "Vibe CRM & Enterprise Portal",
-    category: "Digital Products",
-    tagline: "Scalable Operations & Claim Management Engine",
-    badge: "Enterprise SaaS",
-    summary:
-      "A high-throughput enterprise dashboard simplifying insurance inquiries, multi-tier claims, and real-time policy adjustments with instant search.",
-    metrics: "Sub-second Search • 40% Efficiency Gain",
-    client: "Fintech & Corporate Enterprise",
+    id: "muskelklinikken",
+    title: "Muskelklinikken",
+    country: "Norway",
+    category: "Healthcare & Digital Platform",
+    image: "/Website/Featured/Group%201507.png",
+    tagline: "Totalbehandling & Profesjonell Trening",
+    shortDesc: "Elevated Scandinavian clinical platform and seamless patient intake for Oslo's premier physical therapy clinic.",
+    badge: "99.8% Patient Satisfaction",
+    metrics: "45% Online Booking Growth",
+    client: "Muskelklinikken AS (Oslo, Norway)",
     year: "2023 – 2024",
-    deliverables: ["Role-Based Access Control", "Dynamic Table Sorter", "Claim Workflows", "API Layer"],
-    techStack: ["React", "Next.js App Router", "TypeScript", "Tailwind CSS", "REST/GraphQL"],
+    deliverables: [
+      "Bespoke Web Platform",
+      "Patient Booking UX",
+      "Mobile-First Experience",
+      "Clinical Service Pathways",
+      "Brand Architecture",
+    ],
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Headless Booking API", "Figma"],
     fullStory: {
       problem:
-        "Legacy enterprise systems caused slow claim processing, buried critical customer inquiry data, and frustrated internal operational teams.",
+        "Muskelklinikken required an elevated digital presence matching their stellar reputation as leading physical therapists and performance specialists in Oslo, removing manual friction from patient appointments.",
       solution:
-        "Designed an intuitive web portal with streamlined hydration gates, predictive search, keyboard navigation, and real-time state synchronizations.",
+        "Designed a minimalist Scandinavian web ecosystem with frictionless patient intake, specialist profiles, treatment guides, and automated appointment synchronizations.",
       impact:
-        "Reduced operational handling times significantly, empowering non-technical staff to process complex claim documents effortlessly.",
+        "Increased online bookings by 45% within 60 days, establishing a modern digital gateway trusted by top athletes and rehabilitation patients across Norway.",
     },
   },
   {
-    id: "brand-experience-pulse",
-    title: "Aura Brand & Visual Identity",
-    category: "Brand & Experience",
-    tagline: "Comprehensive Multi-Device Design System & Identity",
-    badge: "Design System",
-    summary:
-      "Creating clarity from complexity. A modular design language engineered for startups and enterprises seeking cohesive digital touchpoints.",
-    metrics: "120+ Components • 100% Tokenized",
-    client: "Global Tech Collective",
-    year: "2023",
-    deliverables: ["Design Tokens", "Typography Hierarchy", "Interactive Micro-animations", "Component Library"],
-    techStack: ["Figma Tokens", "CSS Modules", "Tailwind", "Storybook", "Motion UX"],
+    id: "nihi",
+    title: "NIHI",
+    country: "Norway",
+    category: "Education & Digital Academy",
+    image: "/Website/Featured/Frame%2023-1.png",
+    tagline: "Norges Idretts- og Helseinstitutt",
+    shortDesc: "Digital academy and course registration portal for Norway's premier sports and health education institute.",
+    badge: "Nordic Education Portal",
+    metrics: "2x Remote Enrollments",
+    client: "NIHI (Norway)",
+    year: "2023 – 2024",
+    deliverables: [
+      "Course Catalog & LMS",
+      "Student Enrollment Portal",
+      "Modular Curriculum UX",
+      "Nordic Design System",
+      "High-Speed Edge Delivery",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "REST APIs"],
     fullStory: {
       problem:
-        "Fragmented brand touchpoints across mobile apps, marketing websites, and internal tools were diluting customer trust.",
+        "Health practitioners and fitness coaches found it cumbersome to navigate multi-tier certification pathways and course registrations across Scandinavian regions through legacy sites.",
       solution:
-        "Created an end-to-end design system with unified typography, light/dark luminous themes, accessibility-first contrast ratios, and interactive component guidelines.",
+        "Engineered an intuitive, high-speed educational platform with dynamic course filters, syllabus previews, and streamlined enrollment checkout.",
       impact:
-        "Halved frontend development turnaround time while elevating perceived brand premium across all product touchpoints.",
+        "Doubled student intake across remote Norwegian counties and reduced administrative admission inquiries by over 60%.",
+    },
+  },
+  {
+    id: "avolutiontech",
+    title: "Avolutiontech",
+    country: "Australia",
+    category: "AI & Autonomous Robotics",
+    image: "/Website/Featured/Frame%2022.png",
+    tagline: "Autonomous Drone Vision & Precision Farming",
+    shortDesc: "Autonomous aerial drone telemetry and multispectral computer vision dashboard for modern agriculture.",
+    badge: "AI Vision Dashboard",
+    metrics: "10,000+ Ha Monitored",
+    client: "Avolutiontech (Australia)",
+    year: "2023 – 2024",
+    deliverables: [
+      "Drone Telemetry Dashboard",
+      "Multispectral Health Mapping",
+      "AI Crop Analytics",
+      "Enterprise Web Portal",
+      "Real-Time Telemetry UI",
+    ],
+    techStack: ["Next.js", "Computer Vision", "Python", "WebGL", "REST / WebSockets"],
+    fullStory: {
+      problem:
+        "Commercial agricultural managers and drone operators needed real-time flight telemetry and actionable multispectral crop health insights without needing complex desktop software.",
+      solution:
+        "Developed a modern cloud-first dashboard with real-time drone mission tracking, automated crop stress heatmaps, and AI anomaly warning triggers.",
+      impact:
+        "Enabled multi-drone autonomous scheduling across thousands of hectares, empowering commercial farms with 30% faster pest and water stress detection.",
+    },
+  },
+  {
+    id: "maleka-morani",
+    title: "Maleka Morani",
+    country: "USA",
+    category: "Brand & High-Fashion",
+    image: "/Website/Featured/Frame%2023.png",
+    tagline: "International Pageant Icon & Fashion Personality",
+    shortDesc: "High-fashion editorial digital portfolio and global sponsorship media kit for Mrs. America contestant.",
+    badge: "Global Fashion Editorial",
+    metrics: "150K+ Portfolio Views",
+    client: "Maleka Morani (USA)",
+    year: "2024",
+    deliverables: [
+      "Haute-Couture Portfolio",
+      "Interactive Press Kit",
+      "Sponsorship Portal",
+      "Cinematic Motion Design",
+      "Global CDN Hosting",
+    ],
+    techStack: ["Next.js", "Framer Motion", "Tailwind CSS", "Vercel Edge", "Responsive Media"],
+    fullStory: {
+      problem:
+        "Needed a sophisticated, high-impact digital presence to anchor international press, runway features, philanthropy initiatives, and corporate sponsorship requests.",
+      solution:
+        "Built a luxury editorial experience featuring fluid animations, high-resolution media galleries, and direct media kit download access for global journalists.",
+      impact:
+        "Facilitated major corporate sponsorships and generated widespread media engagement throughout international pageant tours and philanthropic galas.",
+    },
+  },
+  {
+    id: "ambuluwawa",
+    title: "Ambuluwawa",
+    country: "Sri Lanka",
+    category: "Tourism & Cultural Heritage",
+    image: "/Website/Featured/Frame%2023-2.png",
+    tagline: "Biodiversity Complex & Iconic Eco-Sanctuary",
+    shortDesc: "Immersive visitor portal and digital trail companion for Sri Lanka's iconic biodiversity mountain sanctuary.",
+    badge: "Eco-Tourism Landmark",
+    metrics: "300,000+ Digital Visitors",
+    client: "Ambuluwawa Biodiversity Complex (Sri Lanka)",
+    year: "2023 – 2024",
+    deliverables: [
+      "Interactive Visitor Guide",
+      "Weather & Trail Conditions",
+      "Heritage Storytelling UX",
+      "Ticketing Information",
+      "Mobile Travel Companion",
+    ],
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Interactive Maps", "PWA"],
+    fullStory: {
+      problem:
+        "International tourists and pilgrims needed up-to-date climbing guidelines, weather forecasts, and historical context before visiting the 3,500-foot spiral tower summit.",
+      solution:
+        "Crafted an immersive visual portal celebrating the biodiversity, architectural history, and safety tips with fast loading speeds across mobile connections.",
+      impact:
+        "Reached over 300,000 tourists worldwide, elevating Ambuluwawa to one of the most recognized eco-tourism destinations in South Asia.",
+    },
+  },
+  {
+    id: "autoways",
+    title: "Autoways",
+    country: "Sri Lanka",
+    category: "Automotive & Commercial Fleet",
+    image: "/Website/Featured/Frame%2023-3.png",
+    tagline: "Commercial Transport & Heavy-Duty Mobility",
+    shortDesc: "High-throughput commercial fleet catalog and B2B quote configurator for heavy-duty automotive solutions.",
+    badge: "Commercial Logistics",
+    metrics: "3x Faster Quotations",
+    client: "Autoways (Sri Lanka)",
+    year: "2023 – 2024",
+    deliverables: [
+      "Heavy-Duty Fleet Catalog",
+      "Tire & Parts Finder",
+      "B2B RFQ Generator",
+      "Corporate Portal",
+      "Emergency Service Locator",
+    ],
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Search Algorithm", "REST API"],
+    fullStory: {
+      problem:
+        "Logistics fleets and commercial vehicle owners struggled with outdated phone/paper orders to identify compatible heavy-duty tires and spares.",
+      solution:
+        "Engineered an automotive catalog with instant vehicle-model and tire-specification matching, automated quote requests, and fast dealer inquiry dispatch.",
+      impact:
+        "Accelerated quote generation turnaround time by 3x, boosting commercial client conversions and regional distribution efficiency.",
     },
   },
 ];
 
 export default function FeaturedWork() {
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [activeModalStudy, setActiveModalStudy] = useState<CaseStudy | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [activeModalStudy, setActiveModalStudy] = useState<FeaturedProject | null>(null);
 
-  const categories = ["All", "Digital Products", "Websites", "Brand & Experience", "AI & Social Impact"];
+  const categories = ["All", "Healthcare", "Education", "AI & Robotics", "Tourism", "Automotive"];
 
-  const filteredStudies =
-    selectedFilter === "All"
-      ? caseStudies
-      : caseStudies.filter((study) => study.category === selectedFilter);
+  const filteredProjects =
+    selectedCategory === "All"
+      ? featuredProjects
+      : featuredProjects.filter((p) =>
+          p.category.toLowerCase().includes(selectedCategory.toLowerCase())
+        );
 
   return (
-    <section id="work" className="py-24 sm:py-32 relative border-t border-slate-200 dark:border-white/[0.06] transition-colors duration-300">
+    <section
+      id="work"
+      className="py-24 sm:py-32 relative border-t border-slate-200 dark:border-white/[0.06] transition-colors duration-300"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 mb-3 uppercase tracking-wider">
-              Featured Work & Case Studies
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Featured Work & Selected Projects</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
               Work that makes an impact.
             </h2>
           </div>
           <p className="text-slate-600 dark:text-slate-400 max-w-md text-sm sm:text-base leading-relaxed">
-            Every project has a reason to exist. Explore selected digital products, platforms, and experiences crafted with purpose and precision.
+            Every project has a reason to exist. Explore selected digital products, platforms, and experiences crafted with purpose, beauty, and precision.
           </p>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap items-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center gap-2 mb-10">
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedFilter(category)}
+              onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                selectedFilter === category
+                selectedCategory === category
                   ? "bg-slate-900 text-white dark:bg-white dark:text-black font-semibold shadow-md"
                   : "bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.04] text-slate-700 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.06]"
               }`}
@@ -159,55 +253,62 @@ export default function FeaturedWork() {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredStudies.map((project) => (
+        {/* 6 Featured Cards Grid - Matches user's reference image style */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
               onClick={() => setActiveModalStudy(project)}
-              className="bg-white dark:bg-[#101422]/80 rounded-3xl p-7 sm:p-9 flex flex-col justify-between cursor-pointer group border border-slate-200 dark:border-white/[0.08] hover:border-blue-500/40 shadow-sm hover:shadow-xl dark:shadow-none transition-all duration-300"
+              className="group relative rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/13] bg-black border border-slate-800 dark:border-white/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-end"
             >
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-5">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-300 border border-blue-500/20">
-                    {project.category}
-                  </span>
-                  {project.badge && (
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
-                      <Award className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
-                      {project.badge}
-                    </span>
-                  )}
-                </div>
+              {/* Card Poster Image */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
 
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {/* Permanent soft gradient at bottom for readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none transition-opacity duration-300" />
+
+              {/* Normal State: Bottom Title & Country (Exact match to reference photo) */}
+              <div className="relative z-10 p-5 sm:p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4 pointer-events-none">
+                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug">
                   {project.title}
                 </h3>
-                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">{project.tagline}</p>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">{project.summary}</p>
+                <p className="text-xs text-slate-300 font-normal mt-0.5">
+                  {project.country}
+                </p>
               </div>
 
-              <div>
-                {/* Tech Pills */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[11px] font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/[0.04] px-2.5 py-1 rounded-md border border-slate-200 dark:border-white/[0.06]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between pt-5 border-t border-slate-200 dark:border-white/[0.06]">
-                  <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                    {project.metrics}
-                  </span>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300">
-                    <span>Read Case Study</span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              {/* Hover State: Glassmorphism overlay with short description & View button */}
+              <div className="absolute inset-0 z-20 p-5 sm:p-6 bg-black/80 backdrop-blur-md flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto">
+                <div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-400 mb-1">
+                    <Globe2 className="w-3 h-3" />
+                    <span>{project.country}</span>
                   </div>
+                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-slate-300 line-clamp-3 leading-relaxed mb-4">
+                    {project.shortDesc}
+                  </p>
+
+                  {/* View Project Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveModalStudy(project);
+                    }}
+                    className="w-full inline-flex items-center justify-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold bg-white text-slate-950 hover:bg-blue-400 hover:text-black transition-all shadow-md active:scale-95 cursor-pointer"
+                  >
+                    <Eye className="w-3.5 h-3.5" />
+                    <span>View Project</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -215,7 +316,7 @@ export default function FeaturedWork() {
         </div>
       </div>
 
-      {/* Case Study Detail Modal */}
+      {/* Case Study Detail Modal ("wadi wisthraa") */}
       {activeModalStudy && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in">
           <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#0f1320] text-slate-900 dark:text-white rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-white/20 shadow-2xl">
@@ -228,11 +329,25 @@ export default function FeaturedWork() {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="mb-6">
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                {activeModalStudy.category}
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-3">
+            {/* Header info */}
+            <div className="mb-6 pr-10">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                  {activeModalStudy.category}
+                </span>
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/[0.05] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/[0.08] inline-flex items-center gap-1">
+                  <Globe2 className="w-3 h-3 text-blue-500" />
+                  {activeModalStudy.country}
+                </span>
+                {activeModalStudy.badge && (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
+                    <Award className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
+                    {activeModalStudy.badge}
+                  </span>
+                )}
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white">
                 {activeModalStudy.title}
               </h2>
               <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base mt-1">
@@ -244,43 +359,65 @@ export default function FeaturedWork() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] mb-8">
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Client</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.client}</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
+                  {activeModalStudy.client}
+                </span>
               </div>
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Timeline</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.year}</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
+                  {activeModalStudy.year}
+                </span>
               </div>
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Key Result</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.metrics}</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
+                  {activeModalStudy.metrics}
+                </span>
               </div>
               <div>
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 block">Deliverables</span>
-                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{activeModalStudy.deliverables.length} core outputs</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
+                  {activeModalStudy.deliverables.length} core outputs
+                </span>
               </div>
             </div>
 
             {/* Problem / Solution / Impact */}
             <div className="space-y-6 mb-8">
               <div className="border-l-2 border-red-500/60 pl-4 py-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">The Challenge</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{activeModalStudy.fullStory.problem}</p>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
+                  The Challenge
+                </h4>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {activeModalStudy.fullStory.problem}
+                </p>
               </div>
 
               <div className="border-l-2 border-blue-500/60 pl-4 py-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">The Approach & Solution</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{activeModalStudy.fullStory.solution}</p>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
+                  The Approach & Solution
+                </h4>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {activeModalStudy.fullStory.solution}
+                </p>
               </div>
 
               <div className="border-l-2 border-emerald-500/60 pl-4 py-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">Impact & Outcome</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{activeModalStudy.fullStory.impact}</p>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-1">
+                  Impact & Outcome
+                </h4>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {activeModalStudy.fullStory.impact}
+                </p>
               </div>
             </div>
 
             {/* Deliverables List */}
             <div className="mb-8">
-              <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">Key Deliverables</h4>
+              <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
+                Key Deliverables
+              </h4>
               <div className="flex flex-wrap gap-2">
                 {activeModalStudy.deliverables.map((item) => (
                   <span
@@ -289,6 +426,23 @@ export default function FeaturedWork() {
                   >
                     <CheckCircle className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                     {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Tech Stack */}
+            <div className="mb-8">
+              <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
+                Technologies & Tools
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {activeModalStudy.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-[11px] font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/[0.04] px-2.5 py-1 rounded-md border border-slate-200 dark:border-white/[0.06]"
+                  >
+                    {tech}
                   </span>
                 ))}
               </div>
