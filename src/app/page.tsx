@@ -4,7 +4,6 @@ import FeaturedWork from "@/components/FeaturedWork";
 import WhatWeDo from "@/components/WhatWeDo";
 import HowWeWork from "@/components/HowWeWork";
 import ThewebApproach from "@/components/ThewebApproach";
-import AboutIntro from "@/components/AboutIntro";
 import Founder from "@/components/Founder";
 import Technology from "@/components/Technology";
 import Partners from "@/components/Partners";
@@ -20,11 +19,8 @@ export default function Home() {
       <Navbar />
 
       <main className="relative">
-        {/* Hero Section with Live Stats & Statement */}
+        {/* Hero Section with Live Stats & Statement (includes AboutIntro scrolling over hero bg) */}
         <Hero />
-
-        {/* About Intro Section with link to full story */}
-        <AboutIntro />
 
         {/* Featured Work & Interactive Case Studies */}
         <FeaturedWork />
