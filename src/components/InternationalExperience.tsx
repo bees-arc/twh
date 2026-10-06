@@ -31,10 +31,8 @@ const experiences: ExperienceItem[] = [
       "Theweb represented through Sajana Helanjith at the Young South Asian Leaders Initiative in Dhaka.",
     fullDesc:
       "Theweb was represented by Director Sajana Helanjith at YSALI 2025 in Dhaka, connecting with young leaders and entrepreneurs from across South Asia around leadership, entrepreneurship, innovation, and community-driven development.",
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85",
-    featuredImage:
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1400&q=85",
+    image: "/experiences/ysali-card.jpg",
+    featuredImage: "/experiences/ysali-featured.jpg",
     facts: [
       "Connected with young changemakers",
       "Explored entrepreneurship",
@@ -53,10 +51,8 @@ const experiences: ExperienceItem[] = [
       "UX and digital design work with Norwegian businesses and international teams.",
     fullDesc:
       "A long-term strategic partnership delivering over 90 enterprise web applications, logistics platforms, and SaaS products for Norwegian founders and companies, maintaining strict Scandinavian accessibility and craft standards.",
-    image:
-      "https://images.unsplash.com/photo-1583207804784-198ba4353030?auto=format&fit=crop&w=1000&q=85",
-    featuredImage:
-      "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1400&q=85",
+    image: "/experiences/norway-card.jpg",
+    featuredImage: "/experiences/norway-featured.jpg",
     facts: [
       "90+ production web deliveries",
       "Logistics, finance & health tech",
@@ -75,10 +71,8 @@ const experiences: ExperienceItem[] = [
       "Digital work supporting Sri Lankan businesses exploring international opportunities.",
     fullDesc:
       "Digital product engineering supporting Sri Lankan and regional enterprises launching cross-border operations, commerce interfaces, and high-performance brand ecosystems across the Gulf region.",
-    image:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=85",
-    featuredImage:
-      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1400&q=85",
+    image: "/experiences/uae-card.jpg",
+    featuredImage: "/experiences/uae-featured.jpg",
     facts: [
       "MENA cross-border interfaces",
       "Enterprise digital commerce",
@@ -96,10 +90,8 @@ const experiences: ExperienceItem[] = [
       "Leadership, cultural exchange and international connections that broaden perspective.",
     fullDesc:
       "Participating in international founder circles, innovation fellowships, and technology summits that benchmark Sri Lankan engineering and product design directly against Silicon Valley and global standards.",
-    image:
-      "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=1000&q=85",
-    featuredImage:
-      "https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?auto=format&fit=crop&w=1400&q=85",
+    image: "/experiences/usa-card.jpg",
+    featuredImage: "/experiences/usa-featured.jpg",
     facts: [
       "Global leadership fellowships",
       "Silicon Valley UX benchmarks",

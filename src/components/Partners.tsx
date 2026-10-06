@@ -66,10 +66,10 @@ export default function Partners() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 mb-3 uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Partners & Collaborators</span>
+            <span>Partners &amp; Collaborators</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
             Trusted by visionary teams worldwide.
@@ -79,54 +79,27 @@ export default function Partners() {
           </p>
         </div>
 
-        {/* Direct Partner Logos Grid - Alternating: Black -> White -> Black -> White -> Black -> White -> Black */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-5 items-stretch">
-          {partners.map((partner) => {
-            const isDarkCard = partner.bgType === "dark";
-
-            return (
-              <div
-                key={partner.id}
-                className={`group relative h-32 sm:h-36 rounded-2xl p-5 flex items-center justify-center transition-all duration-300 hover:-translate-y-1.5 cursor-default ${
-                  isDarkCard
-                    ? "bg-[#0b0e17] border border-white/10 shadow-lg shadow-black/25 hover:border-blue-400/50 hover:shadow-blue-500/10"
-                    : "bg-white border border-slate-200/90 shadow-sm hover:border-blue-500/40 hover:shadow-xl"
-                }`}
-                title={partner.name}
-              >
-                {/* Logo Image */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-h-12 sm:max-h-14 w-auto max-w-[130px] object-contain transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-            );
-          })}
-        </div>
-
         {/* Continuous Smooth Infinite Marquee Ticker */}
-        <div className="relative mt-12 overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="animate-marquee gap-6 sm:gap-8 items-center">
-            {[...partners, ...partners].map((partner, index) => {
+        <div className="relative overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="animate-marquee gap-5 sm:gap-6 items-center">
+            {[...partners, ...partners, ...partners, ...partners].map((partner, index) => {
               const isDarkCard = partner.bgType === "dark";
 
               return (
                 <div
                   key={`marquee-${partner.id}-${index}`}
-                  className={`h-20 sm:h-24 min-w-[160px] sm:min-w-[180px] rounded-xl px-6 flex items-center justify-center transition-all duration-300 ${
+                  className={`h-24 sm:h-28 min-w-[180px] sm:min-w-[210px] rounded-2xl px-6 sm:px-8 flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer ${
                     isDarkCard
-                      ? "bg-[#0b0e17] border border-white/10 shadow-md"
-                      : "bg-white border border-slate-200/90 shadow-sm"
+                      ? "bg-[#0b0e17] border border-white/10 shadow-lg shadow-black/25 hover:border-blue-400/50 hover:shadow-blue-500/10"
+                      : "bg-white border border-slate-200/90 shadow-sm hover:border-blue-500/40 hover:shadow-xl"
                   }`}
+                  title={partner.name}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="max-h-9 sm:max-h-10 w-auto max-w-[120px] object-contain"
+                    className="max-h-11 sm:max-h-12 w-auto max-w-[140px] object-contain transition-transform duration-300"
                     loading="lazy"
                   />
                 </div>
