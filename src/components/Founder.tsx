@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Quote, X } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Quote } from "lucide-react";
 
 export default function Founder() {
-  const [modalOpen, setModalOpen] = useState(false);
-
   return (
     <section id="founder" className="py-24 sm:py-32 relative border-t border-slate-200 dark:border-white/[0.06] bg-slate-50 dark:bg-[#090b12] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,15 +72,15 @@ export default function Founder() {
                 </div>
               </div>
 
-              {/* Actions & Read More Trigger */}
+              {/* Actions & Link to Full Dedicated Founder Page */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-6">
-                <button
-                  onClick={() => setModalOpen(true)}
+                <Link
+                  href="/founder"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-all cursor-pointer shadow-md"
                 >
                   <span>Read Full Founder Story</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </Link>
 
                 <a
                   href="/contact"
@@ -115,82 +113,6 @@ export default function Founder() {
           </div>
         </div>
       </div>
-
-      {/* Founder Story Detail Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl animate-in fade-in">
-          <div className="relative w-full max-w-3xl max-h-[88vh] overflow-y-auto bg-white dark:bg-[#0e121f] text-slate-900 dark:text-white rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-white/20 shadow-2xl">
-            <button
-              onClick={() => setModalOpen(false)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
-              aria-label="Close modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-4 mb-6 pr-10">
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-slate-200 dark:border-white/20 shrink-0 shadow-md">
-                <Image
-                  src="/Croped.png"
-                  alt="Theweb Founder"
-                  fill
-                  className="object-cover object-top"
-                  sizes="80px"
-                />
-              </div>
-              <div>
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 uppercase tracking-wider">
-                  The Founder Narrative
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">
-                  From Sri Lanka to Norway & Beyond
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
-                  How curiosity, community, and purpose gave birth to Theweb Agency.
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-              <p>
-                In 2019, things started simply: experimenting with technology, design, and digital media in university hackathons and creative workshops. Every weekend brought a new experiment, whether an interactive prototype or a community initiative.
-              </p>
-              <p>
-                By 2021, the focus sharpened into purpose-driven UX and product engineering. That focus crystallized into <strong>Habarala</strong> — an agritech platform solving real-world agricultural problems for smallholder farmers. The project gained international recognition, winning the Southeast Asia Region Championship and advancing as a World Finalist in the prestigious Microsoft Imagine Cup. It was the moment technology shifted from what <em>could</em> be built to what <em>should</em> be solved.
-              </p>
-              <p>
-                In 2022, an internship under <strong>Babette</strong> marked the first step beyond Sri Lanka. What began as a short-term international opportunity grew into a deep long-term professional partnership. In fact, the name <em>“Theweb”</em> was originally given by Babette — an idea that was still taking shape.
-              </p>
-              <p>
-                Over the next two years, that relationship expanded into over 90 digital design and development projects for Norwegian businesses across logistics, finance, health, and enterprise SaaS.
-              </p>
-              <p>
-                In 2023, Theweb Agency was formally established. Today, we work with ambitious founders and established enterprises across the world, bringing the same core philosophy to every line of code and every pixel:
-              </p>
-              <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-900 dark:text-white font-medium italic">
-                &quot;Technology should be useful. If it doesn&apos;t make life easier, faster, or more understandable for the person using it, it isn&apos;t finished yet.&quot;
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between">
-              <button
-                onClick={() => setModalOpen(false)}
-                className="text-xs text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white cursor-pointer"
-              >
-                Close Story
-              </button>
-              <a
-                href="/contact"
-                onClick={() => setModalOpen(false)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-black hover:opacity-90"
-              >
-                <span>Let&apos;s Build Together</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
