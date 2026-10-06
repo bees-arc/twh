@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowUpRight, Award, X, Sparkles, CheckCircle, Eye, Globe2, Layers } from "lucide-react";
+import { ArrowUpRight, Award, X, Sparkles, CheckCircle, Globe2, Layers } from "lucide-react";
 
 export interface FeaturedProject {
   id: string;
@@ -306,22 +306,9 @@ export default function FeaturedWork() {
                   <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight leading-snug mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-xs text-slate-700 dark:text-slate-300 line-clamp-3 leading-relaxed mb-4">
+                  <p className="text-xs text-slate-700 dark:text-slate-300 line-clamp-4 leading-relaxed">
                     {project.shortDesc}
                   </p>
-
-                  {/* View Project Button: Dark button on light overlay, Light button on dark overlay */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveModalStudy(project);
-                    }}
-                    className="w-full inline-flex items-center justify-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-900 text-white hover:bg-blue-600 dark:bg-white dark:text-slate-950 dark:hover:bg-blue-400 dark:hover:text-black transition-all shadow-md active:scale-95 cursor-pointer"
-                  >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>View Project</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
                 </div>
               </div>
             </div>
