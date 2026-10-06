@@ -5,6 +5,7 @@ import WhatWeDo from "@/components/WhatWeDo";
 import HowWeWork from "@/components/HowWeWork";
 import ThewebApproach from "@/components/ThewebApproach";
 import Founder from "@/components/Founder";
+import InternationalExperience from "@/components/InternationalExperience";
 import Technology from "@/components/Technology";
 import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
@@ -36,6 +37,9 @@ export default function Home() {
 
         {/* Founder Spotlight & Detailed Background Modal */}
         <Founder />
+
+        {/* International Experience: From Sri Lanka to the World */}
+        <InternationalExperience />
 
         {/* Technology: Pragmatic Stack & Tools */}
         <Technology />
