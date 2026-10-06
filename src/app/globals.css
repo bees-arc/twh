@@ -208,6 +208,16 @@ html.light .text-gradient {
   animation-play-state: paused;
 }
 
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow:hover {
+  animation-play-state: paused;
+}
+
 /* Hide scrollbar utility */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

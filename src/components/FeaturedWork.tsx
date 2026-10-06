@@ -227,6 +227,61 @@ export default function FeaturedWork() {
           p.category.toLowerCase().includes(selectedCategory.toLowerCase())
         );
 
+  // Prepare projects for smooth infinite marquee ticker
+  // To ensure the -50% translateX marquee loops seamlessly without visual jumps,
+  // the first half and second half must be identical.
+  const tickerProjects = [...featuredProjects, ...featuredProjects];
+
+  const renderCard = (project: FeaturedProject, key: string, isTickerCard = false) => (
+    <div
+      key={key}
+      onClick={() => setActiveModalStudy(project)}
+      className={`group relative rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/13] bg-white dark:bg-black border border-slate-200/90 dark:border-white/10 shadow-none hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-end ${
+        isTickerCard
+          ? "shrink-0 w-[270px] sm:w-[calc((100cqi-1.25rem)/2)] md:w-[calc((100cqi-2.5rem)/3)] lg:w-[calc((100cqi-3.75rem)/4)]"
+          : "w-full"
+      }`}
+    >
+      {/* Card Poster Image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={project.image}
+        alt={project.title}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        loading="lazy"
+      />
+
+      {/* Permanent soft gradient at bottom: Soft translucent white in light theme, Black in dark theme */}
+      <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/30 to-transparent dark:from-black/90 dark:via-black/35 dark:to-transparent pointer-events-none transition-opacity duration-300" />
+
+      {/* Normal State: Bottom Title & Country */}
+      <div className="relative z-10 p-5 sm:p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4 pointer-events-none">
+        <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight leading-snug">
+          {project.title}
+        </h3>
+        <p className="text-xs text-slate-700 dark:text-slate-300 font-medium mt-0.5">
+          {project.country}
+        </p>
+      </div>
+
+      {/* Hover State: Frosted glass overlay (Translucent white in light theme, Black in dark theme) */}
+      <div className="absolute inset-0 z-20 p-5 sm:p-6 bg-white/75 dark:bg-black/80 backdrop-blur-md flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto">
+        <div>
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-600 dark:text-blue-400 mb-1">
+            <Globe2 className="w-3 h-3" />
+            <span>{project.country}</span>
+          </div>
+          <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight leading-snug mb-2">
+            {project.title}
+          </h3>
+          <p className="text-xs text-slate-700 dark:text-slate-300 line-clamp-4 leading-relaxed">
+            {project.shortDesc}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <section
       id="work"
@@ -250,7 +305,7 @@ export default function FeaturedWork() {
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap items-center gap-2 mb-10">
+        <div className="flex flex-wrap items-center gap-2 mb-8">
           {categories.map((category) => (
             <button
               key={category}
@@ -266,54 +321,28 @@ export default function FeaturedWork() {
           ))}
         </div>
 
-        {/* 6 Featured Cards Grid - Matches user's reference image style */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => setActiveModalStudy(project)}
-              className="group relative rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/13] bg-white dark:bg-black border border-slate-200/90 dark:border-white/10 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-end"
-            >
-              {/* Card Poster Image */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                loading="lazy"
-              />
+        {/* View Mode: Smooth Infinite Ticker for 'All', Stationary Grid for selected categories */}
+        {selectedCategory === "All" ? (
+          /* 6 Featured Cards Infinite Ticker - 4 cards visible at a time on desktop */
+          <div className="relative w-full overflow-hidden py-4 [container-type:inline-size]">
+            {/* Subtle lateral gradient edges for graceful fade-in/fade-out */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-slate-50 dark:from-[#08090d] to-transparent z-30" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-slate-50 dark:from-[#08090d] to-transparent z-30" />
 
-              {/* Permanent soft gradient at bottom: Soft translucent white in light theme, Black in dark theme */}
-              <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/30 to-transparent dark:from-black/90 dark:via-black/35 dark:to-transparent pointer-events-none transition-opacity duration-300" />
-
-              {/* Normal State: Bottom Title & Country */}
-              <div className="relative z-10 p-5 sm:p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4 pointer-events-none">
-                <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight leading-snug">
-                  {project.title}
-                </h3>
-                <p className="text-xs text-slate-700 dark:text-slate-300 font-medium mt-0.5">
-                  {project.country}
-                </p>
-              </div>
-
-              {/* Hover State: Frosted glass overlay (Translucent white in light theme, Black in dark theme) */}
-              <div className="absolute inset-0 z-20 p-5 sm:p-6 bg-white/75 dark:bg-black/80 backdrop-blur-md flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto">
-                <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-600 dark:text-blue-400 mb-1">
-                    <Globe2 className="w-3 h-3" />
-                    <span>{project.country}</span>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-tight leading-snug mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-slate-700 dark:text-slate-300 line-clamp-4 leading-relaxed">
-                    {project.shortDesc}
-                  </p>
-                </div>
-              </div>
+            <div className="animate-marquee-slow gap-4 sm:gap-5 items-stretch">
+              {tickerProjects.map((project, index) =>
+                renderCard(project, `ticker-${project.id}-${index}`, true)
+              )}
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          /* Stationary Grid for Selected Category - No ticker / No rolling */
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 py-4 animate-in fade-in duration-300">
+            {filteredProjects.map((project) =>
+              renderCard(project, `grid-${project.id}`, false)
+            )}
+          </div>
+        )}
       </div>
 
       {/* Case Study Detail Modal ("wadi wisthraa" - Tabbed, No Ugly Scrollbar) */}
