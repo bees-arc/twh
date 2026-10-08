@@ -21,88 +21,87 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    id: "ysali",
+    id: "norway",
+    country: "Norway",
+    year: "90+ Projects",
+    tagline: "Norway",
+    title: "90+ projects",
+    place: "Norway",
+    shortDesc:
+      "UX and digital design work with Norwegian businesses and teams.",
+    fullDesc:
+      "Norway became a major turning point in Ravindu’s professional journey. What started as an opportunity to work in digital design grew into more than 90 UX and digital design projects with Norwegian businesses and teams. The experience introduced new ways of working, communicating and solving problems, while showing that skills developed in Sri Lanka could create value internationally.",
+    image: "/experiences/norway-card.jpg",
+    featuredImage: "/experiences/norway-featured.jpg",
+    facts: [
+      "90+ UX & digital design projects",
+      "Norwegian businesses & teams",
+      "New ways of working & solving problems",
+      "Global value from Sri Lankan skills",
+    ],
+  },
+  {
+    id: "bangladesh",
     country: "Bangladesh",
     year: "2025",
     tagline: "Bangladesh · 2025",
     title: "YSALI 2025",
     place: "Dhaka, Bangladesh",
     shortDesc:
-      "Theweb represented through Sajana Helanjith at the Young South Asian Leaders Initiative in Dhaka.",
+      "A leadership and cultural exchange experience with young leaders from across South Asia.",
     fullDesc:
-      "Theweb was represented by Director Sajana Helanjith at YSALI 2025 in Dhaka, connecting with young leaders and entrepreneurs from across South Asia around leadership, entrepreneurship, innovation, and community-driven development.",
-    image: "/experiences/ysali-card.jpg",
-    featuredImage: "/experiences/ysali-featured.jpg",
+      "In 2025, Theweb’s Director, Sajana Helanjith, represented Sri Lanka at the Young South Asian Leaders Initiative in Dhaka, Bangladesh. The experience connected him with young leaders from across South Asia and created opportunities to exchange ideas around leadership, innovation and entrepreneurship. It also strengthened Theweb’s connection to a wider international community.",
+    image: "/Daka.jpg.jpeg",
+    featuredImage: "/Daka.jpg.jpeg",
     facts: [
-      "Connected with young changemakers",
-      "Explored entrepreneurship",
-      "Shared ideas across South Asia",
-      "Built lasting connections",
-    ],
-  },
-  {
-    id: "norway",
-    country: "Norway",
-    year: "2022–23",
-    tagline: "Norway · 2022–23",
-    title: "90+ projects",
-    place: "Oslo & Bergen, Norway",
-    shortDesc:
-      "UX and digital design work with Norwegian businesses and international teams.",
-    fullDesc:
-      "A long-term strategic partnership delivering over 90 enterprise web applications, logistics platforms, and SaaS products for Norwegian founders and companies, maintaining strict Scandinavian accessibility and craft standards.",
-    image: "/experiences/norway-card.jpg",
-    featuredImage: "/experiences/norway-featured.jpg",
-    facts: [
-      "90+ production web deliveries",
-      "Logistics, finance & health tech",
-      "Deep Oslo design collaboration",
-      "Scandinavian craft standards",
+      "Young South Asian Leaders Initiative",
+      "Exchange in Dhaka, Bangladesh",
+      "Leadership, innovation & entrepreneurship",
+      "Wider international community",
     ],
   },
   {
     id: "uae",
-    country: "UAE",
-    year: "2025",
-    tagline: "UAE · 2025",
-    title: "Sharjah",
-    place: "Sharjah & Dubai, UAE",
+    country: "United Arab Emirates",
+    tagline: "United Arab Emirates",
+    title: "Sharjah Expo",
+    place: "Sharjah, UAE",
     shortDesc:
-      "Digital work supporting Sri Lankan businesses exploring international opportunities.",
+      "Supporting digital work and international business opportunities at the Middle East Rubber & Tyre Expo in Sharjah.",
     fullDesc:
-      "Digital product engineering supporting Sri Lankan and regional enterprises launching cross-border operations, commerce interfaces, and high-performance brand ecosystems across the Gulf region.",
+      "The Middle East became another chapter through Theweb’s participation in the Middle East Rubber & Tyre Expo in Sharjah, UAE. Working alongside Sri Lankan businesses at an international B2B event offered valuable insight into global markets, business communication and opportunities. It was also an opportunity to support Sri Lankan businesses as they presented themselves to an international audience.",
     image: "/experiences/uae-card.jpg",
     featuredImage: "/experiences/uae-featured.jpg",
     facts: [
-      "MENA cross-border interfaces",
-      "Enterprise digital commerce",
-      "Scalable multi-currency UX",
-      "Regional business expansion",
+      "Middle East Rubber & Tyre Expo",
+      "International B2B event presence",
+      "Global market & communication insights",
+      "Supporting Sri Lankan enterprises",
     ],
   },
   {
     id: "usa",
     country: "United States",
     tagline: "United States",
-    title: "Exchange",
-    place: "Global Leadership & Networks",
+    title: "YSALI America",
+    place: "United States",
     shortDesc:
-      "Leadership, cultural exchange and international connections that broaden perspective.",
+      "International leadership, learning, and professional experiences through the Young South Asian Leaders Initiative.",
     fullDesc:
-      "Participating in international founder circles, innovation fellowships, and technology summits that benchmark Sri Lankan engineering and product design directly against Silicon Valley and global standards.",
-    image: "/experiences/usa-card.jpg",
-    featuredImage: "/experiences/usa-featured.jpg",
+      "The United States became part of Ravindu’s journey through the Young South Asian Leaders Initiative and its international exchange opportunities. The experience brought new perspectives on leadership, technology, entrepreneurship and community development. Meeting people from different backgrounds and learning from international organisations expanded his understanding of what is possible and strengthened his interest in building meaningful connections beyond Sri Lanka.",
+    image: "/YSALI America.jpeg",
+    featuredImage: "/YSALI America.jpeg",
     facts: [
-      "Global leadership fellowships",
-      "Silicon Valley UX benchmarks",
-      "Cross-cultural design thinking",
-      "Continuous peer learning",
+      "Young South Asian Leaders Initiative",
+      "Leadership, technology & entrepreneurship",
+      "International exchange & learning",
+      "Global connections beyond Sri Lanka",
     ],
   },
 ];
 
 export default function InternationalExperience() {
-  const [selectedId, setSelectedId] = useState<string>("ysali");
+  const [selectedId, setSelectedId] = useState<string>("norway");
   const activeExp =
     experiences.find((e) => e.id === selectedId) || experiences[0];
 
