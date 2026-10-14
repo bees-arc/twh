@@ -235,8 +235,8 @@ export default function FeaturedWork() {
   const renderCard = (project: FeaturedProject, key: string, isTickerCard = false) => (
     <div
       key={key}
-      onClick={() => setActiveModalStudy(project)}
-      className={`group relative rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/13] bg-white dark:bg-black border border-slate-200/90 dark:border-white/10 shadow-none hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-end ${
+      /* onClick={() => setActiveModalStudy(project)} */
+      className={`group relative rounded-[22px] sm:rounded-[26px] overflow-hidden aspect-[9/13] bg-white dark:bg-black border border-slate-200/90 dark:border-white/10 shadow-none hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col justify-end ${
         isTickerCard
           ? "shrink-0 w-[270px] sm:w-[calc((100cqi-1.25rem)/2)] md:w-[calc((100cqi-2.5rem)/3)] lg:w-[calc((100cqi-3.75rem)/4)]"
           : "w-full"
@@ -345,13 +345,12 @@ export default function FeaturedWork() {
         )}
       </div>
 
-      {/* Case Study Detail Modal ("wadi wisthraa" - Tabbed, No Ugly Scrollbar) */}
-      {activeModalStudy && (
+      {/* Case Study Detail Modal ("wadi wisthraa" - Tabbed, No Ugly Scrollbar) - Commented out */}
+      {/*
+      activeModalStudy && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-xl animate-in fade-in">
           <div className="relative w-full max-w-3xl max-h-[92vh] flex flex-col bg-white dark:bg-[#0d101c] text-slate-900 dark:text-white rounded-3xl border border-slate-200 dark:border-white/15 shadow-2xl overflow-hidden">
-            {/* Modal Header */}
             <div className="p-6 sm:p-8 pb-4 border-b border-slate-100 dark:border-white/[0.08] relative">
-              {/* Close Button */}
               <button
                 onClick={() => setActiveModalStudy(null)}
                 className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
@@ -383,7 +382,6 @@ export default function FeaturedWork() {
                 {activeModalStudy.tagline}
               </p>
 
-              {/* Interactive Tabs Header - Eliminates long single-page scroll */}
               <div className="flex items-center gap-2 mt-5">
                 <button
                   onClick={() => setActiveModalTab("story")}
@@ -408,11 +406,9 @@ export default function FeaturedWork() {
               </div>
             </div>
 
-            {/* Modal Body - Smoothly scrollable with NO visible scrollbar */}
             <div className="p-6 sm:p-8 overflow-y-auto no-scrollbar flex-1">
               {activeModalTab === "story" ? (
                 <div className="space-y-5 animate-in fade-in duration-200">
-                  {/* Quick Specs Strip */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.06]">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block">Client</span>
@@ -428,7 +424,6 @@ export default function FeaturedWork() {
                     </div>
                   </div>
 
-                  {/* Challenge */}
                   <div className="p-4 rounded-2xl bg-red-500/[0.04] border-l-4 border-red-500 dark:bg-red-500/[0.05]">
                     <h4 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-1">
                       The Challenge
@@ -438,7 +433,6 @@ export default function FeaturedWork() {
                     </p>
                   </div>
 
-                  {/* Approach & Solution */}
                   <div className="p-4 rounded-2xl bg-blue-500/[0.04] border-l-4 border-blue-500 dark:bg-blue-500/[0.05]">
                     <h4 className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">
                       The Approach & Solution
@@ -448,7 +442,6 @@ export default function FeaturedWork() {
                     </p>
                   </div>
 
-                  {/* Impact & Outcome */}
                   <div className="p-4 rounded-2xl bg-emerald-500/[0.04] border-l-4 border-emerald-500 dark:bg-emerald-500/[0.05]">
                     <h4 className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
                       Impact & Outcome
@@ -460,7 +453,6 @@ export default function FeaturedWork() {
                 </div>
               ) : (
                 <div className="space-y-6 animate-in fade-in duration-200">
-                  {/* Key Deliverables */}
                   <div>
                     <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
                       Key Deliverables ({activeModalStudy.deliverables.length} core outputs)
@@ -478,7 +470,6 @@ export default function FeaturedWork() {
                     </div>
                   </div>
 
-                  {/* Technologies & Tools */}
                   <div>
                     <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mb-3">
                       Technologies & Stack
@@ -495,7 +486,6 @@ export default function FeaturedWork() {
                     </div>
                   </div>
 
-                  {/* Impact Highlight Banner */}
                   <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-transparent border border-blue-500/20">
                     <span className="text-[11px] uppercase tracking-wider font-bold text-blue-600 dark:text-blue-400 block mb-1">
                       Headline Metric
@@ -508,7 +498,6 @@ export default function FeaturedWork() {
               )}
             </div>
 
-            {/* Modal Bottom CTA Bar */}
             <div className="p-5 sm:p-6 border-t border-slate-100 dark:border-white/[0.08] bg-slate-50/50 dark:bg-white/[0.02] flex items-center justify-between">
               <button
                 onClick={() => setActiveModalStudy(null)}
@@ -527,7 +516,8 @@ export default function FeaturedWork() {
             </div>
           </div>
         </div>
-      )}
+      )
+      */}
     </section>
   );
 }

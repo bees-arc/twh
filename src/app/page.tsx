@@ -48,7 +48,7 @@ export default function Home() {
         <Partners />
 
         {/* Testimonials from Norwegian Partners & International Competitions */}
-        <Testimonials />
+        {/* <Testimonials /> */}
 
         {/* Insights & Articles */}
         <Insights />

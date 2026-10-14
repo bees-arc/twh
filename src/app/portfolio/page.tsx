@@ -26,7 +26,7 @@ export default function PortfolioPage() {
         <Partners />
 
         {/* Testimonials */}
-        <Testimonials />
+        {/* <Testimonials /> */}
 
         {/* Insights */}
         <Insights />
